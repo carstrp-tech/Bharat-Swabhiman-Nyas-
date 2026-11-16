@@ -1,87 +1,271 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#123d2c">
+<meta name="theme-color" content="#103b2b">
 <title>भारत स्वाभिमान न्यास</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
 
-*{box-sizing:border-box;margin:0;padding:0}
-body{
+<style>
+:root {
+ --green:#103b2b;
+ --green2:#1b5940;
+ --gold:#d8b66b;
+ --cream:#f7f4ec;
+ --white:#ffffff;
+ --text:#173b2c;
+}
+
+* {
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+}
+
+body {
  font-family:'Hind',sans-serif;
- background:#f6f3eb;
- color:#18382a;
- padding-bottom:75px;
+ background:var(--cream);
+ color:var(--text);
+ padding-bottom:82px;
 }
-header{
- background:linear-gradient(135deg,#0d3022,#20563c);
- color:white;padding:17px 15px 20px;
- border-radius:0 0 25px 25px;
- box-shadow:0 5px 20px #0002;
+
+/* HEADER */
+
+header {
+ background:linear-gradient(135deg,#0b3022,#15523a,#0d3929);
+ padding:18px 16px 20px;
+ border-radius:0 0 26px 26px;
+ box-shadow:0 8px 24px #102d2030;
 }
-.top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{
- width:45px;height:45px;border:1px solid #d9b45d;
- border-radius:50%;display:grid;place-items:center;
- color:#f2d38a;font-size:25px;
+
+.topbar {
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:10px;
 }
-.brand h1{font-size:18px;line-height:1.2}
-.brand small{font-size:10px;color:#e8d6a9;letter-spacing:1px}
-.admin{
- background:linear-gradient(135deg,#f1d38c,#c49a45);
- border:0;border-radius:20px;padding:9px 13px;
- color:#193a29;font-weight:700;font-family:inherit;
+
+.brand {
+ display:flex;
+ align-items:center;
+ gap:11px;
 }
-.hero{
- margin-top:18px;height:185px;border-radius:18px;
- border:1px solid #d7b55f;
- background:linear-gradient(135deg,#244f39,#102d21);
- display:flex;flex-direction:column;align-items:center;
- justify-content:center;text-align:center;color:#f5dfac;
- padding:15px;
+
+.logo {
+ width:48px;
+ height:48px;
+ border:1.5px solid var(--gold);
+ border-radius:50%;
+ display:grid;
+ place-items:center;
+ color:#f2d48d;
+ font-size:27px;
 }
-.hero .om{font-size:40px}
-.hero h2{font-size:17px;margin-top:7px}
-.hero p{font-size:11px;color:#e3d2aa;margin-top:4px}
-main{padding:21px 14px}
-.heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.heading h2{font-size:20px;color:#17442e}
-.heading span{font-size:11px;color:#9a7a3d}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.category{
- background:white;border:1px solid #e9e0cf;
- border-radius:16px;padding:14px 10px;
- min-height:105px;display:flex;align-items:center;gap:10px;
- box-shadow:0 4px 13px #173c2910;
+
+.brand h1 {
+ font-family:'Yatra One','Hind',sans-serif;
+ font-size:19px;
+ color:white;
+ line-height:1.3;
 }
-.icon{
- min-width:43px;height:43px;border-radius:13px;
- background:#f5eedc;display:grid;place-items:center;
- font-size:22px;
+
+.brand small {
+ display:block;
+ color:#e7d2a0;
+ font-size:10px;
+ letter-spacing:1.2px;
 }
-.category h3{font-size:13px;line-height:1.35;color:#214632}
-.category p{font-size:10px;color:#a1844e;margin-top:4px}
-footer{
- background:#103727;color:white;text-align:center;
- padding:17px;margin-top:15px;
+
+.admin-btn {
+ background:linear-gradient(135deg,#f4d990,#c99e49);
+ border:1px solid #f6e2ad;
+ border-radius:30px;
+ padding:10px 14px;
+ color:#193b2b;
+ font-family:'Hind',sans-serif;
+ font-size:13px;
+ font-weight:700;
+ white-space:nowrap;
+ box-shadow:0 3px 9px #0002;
+ cursor:pointer;
 }
-footer strong{display:block;font-size:16px}
-footer span{font-size:12px;color:#e4c77f}
-.bottom{
- position:fixed;bottom:0;left:0;right:0;
- background:white;display:flex;justify-content:space-around;
- padding:10px 3px 12px;box-shadow:0 -3px 15px #0001;
+
+/* HERO PHOTO */
+
+.hero {
+ margin-top:19px;
+ padding:8px;
+ border:1px solid var(--gold);
+ border-radius:19px;
+ background:linear-gradient(145deg,#285b40,#0c3022);
+ box-shadow:inset 0 0 18px #0002;
 }
-.bottom div{text-align:center;color:#77857b;font-size:10px}
-.bottom b{display:block;font-size:19px;font-weight:400}
-.bottom .active{color:#17442e;font-weight:700}
-@media(min-width:600px){
- body{max-width:520px;margin:auto}
- .grid{grid-template-columns:repeat(3,1fr)}
+
+.hero img {
+ width:100%;
+ height:210px;
+ display:block;
+ object-fit:cover;
+ object-position:center 35%;
+ border-radius:13px;
+}
+
+.hero-title {
+ color:#f5dfac;
+ text-align:center;
+ padding:10px 5px 5px;
+ font-size:16px;
+ font-weight:700;
+}
+
+/* CATEGORY SECTION */
+
+main {
+ padding:22px 14px 25px;
+}
+
+.section-title {
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:16px;
+}
+
+.section-title h2 {
+ font-family:'Yatra One','Hind',sans-serif;
+ color:var(--green);
+ font-size:20px;
+}
+
+.section-title span {
+ color:#9c804c;
+ font-size:11px;
+}
+
+.category-grid {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px;
+}
+
+.category-card {
+ background:white;
+ border:1px solid #e8dfcc;
+ border-radius:17px;
+ min-height:105px;
+ padding:13px 10px;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ box-shadow:0 5px 15px #193c290c;
+ cursor:pointer;
+ transition:transform .2s,box-shadow .2s;
+}
+
+.category-card:active {
+ transform:scale(.97);
+}
+
+.category-icon {
+ width:45px;
+ height:45px;
+ min-width:45px;
+ border-radius:14px;
+ background:linear-gradient(145deg,#fbf5e6,#f0e5ca);
+ display:grid;
+ place-items:center;
+ font-size:23px;
+}
+
+.category-info h3 {
+ color:#214b36;
+ font-size:13px;
+ font-weight:700;
+ line-height:1.4;
+}
+
+.category-info p {
+ color:#a0834c;
+ font-size:10px;
+ margin-top:4px;
+}
+
+/* FOOTER */
+
+footer {
+ background:linear-gradient(135deg,#0c3022,#1a5038);
+ color:white;
+ text-align:center;
+ padding:19px 12px;
+ margin-top:18px;
+ border-radius:17px;
+}
+
+footer strong {
+ display:block;
+ font-size:17px;
+ font-weight:700;
+ letter-spacing:.3px;
+}
+
+footer span {
+ color:#e8ca82;
+ font-size:12px;
+}
+
+/* BOTTOM NAVIGATION */
+
+.bottom-nav {
+ position:fixed;
+ z-index:10;
+ bottom:0;
+ left:0;
+ right:0;
+ display:flex;
+ justify-content:space-around;
+ background:white;
+ border-top:1px solid #eee6d6;
+ box-shadow:0 -4px 18px #0000000c;
+ padding:9px 3px calc(9px + env(safe-area-inset-bottom));
+}
+
+.nav-item {
+ flex:1;
+ text-align:center;
+ color:#859087;
+ font-size:10px;
+ cursor:pointer;
+}
+
+.nav-icon {
+ display:block;
+ font-size:21px;
+ margin-bottom:2px;
+}
+
+.nav-item.active {
+ color:var(--green);
+ font-weight:700;
+}
+
+/* TABLET / DESKTOP */
+
+@media(min-width:650px) {
+ body {
+  max-width:650px;
+  margin:auto;
+ }
+ .category-grid {
+  grid-template-columns:repeat(3,1fr);
+ }
+ .hero img {
+  height:270px;
+ }
 }
 </style>
 </head>
@@ -89,7 +273,9 @@ footer span{font-size:12px;color:#e4c77f}
 <body>
 
 <header>
- <div class="top">
+
+ <div class="topbar">
+
   <div class="brand">
    <div class="logo">ॐ</div>
    <div>
@@ -97,41 +283,76 @@ footer span{font-size:12px;color:#e4c77f}
     <small>UTTAR PRADESH WEST</small>
    </div>
   </div>
-  <button class="admin" onclick="alert('एडमिन लॉगिन अगले चरण में जोड़ा जाएगा।')">
-   एडमिन लॉगिन
+
+  <button class="admin-btn" onclick="adminLogin()">
+   ♙ एडमिन लॉगिन
   </button>
+
  </div>
 
  <section class="hero">
-  <div class="om">🕉️</div>
-  <h2>स्वामी रामदेव जी एवं आचार्य बालकृष्ण जी</h2>
-  <p>मुख्य फोटो अगले चरण में जोड़ी जाएगी</p>
+
+  <img
+   src="./swami-acharya.jpg"
+   alt="स्वामी रामदेव जी एवं आचार्य बालकृष्ण जी"
+   onerror="this.style.display='none';document.getElementById('photo-error').style.display='block';"
+  >
+
+  <div id="photo-error" style="display:none;color:#f5dfac;text-align:center;padding:35px 10px;">
+   मुख्य फोटो लोड नहीं हुई। GitHub में फोटो का नाम जाँचें।
+  </div>
+
+  <div class="hero-title">
+   स्वामी रामदेव जी एवं आचार्य बालकृष्ण जी
+  </div>
+
  </section>
+
 </header>
 
 <main>
- <div class="heading">
+
+ <div class="section-title">
   <h2>पोस्टर कैटेगरी</h2>
   <span>अपनी पसंद चुनें</span>
  </div>
 
- <div class="grid" id="categories"></div>
+ <div class="category-grid" id="categories"></div>
 
  <footer>
   <strong>Rohit Pundeer</strong>
   <span>State Office Incharge</span>
  </footer>
+
 </main>
 
-<nav class="bottom">
- <div class="active"><b>⌂</b>होम</div>
- <div><b>▦</b>कैटेगरी</div>
- <div><b>▣</b>मेरे पोस्टर</div>
- <div><b>♙</b>प्रोफाइल</div>
+<nav class="bottom-nav">
+
+ <div class="nav-item active">
+  <span class="nav-icon">⌂</span>
+  होम
+ </div>
+
+ <div class="nav-item">
+  <span class="nav-icon">▦</span>
+  कैटेगरी
+ </div>
+
+ <div class="nav-item">
+  <span class="nav-icon">▣</span>
+  मेरे पोस्टर
+ </div>
+
+ <div class="nav-item">
+  <span class="nav-icon">♙</span>
+  प्रोफाइल
+ </div>
+
 </nav>
 
 <script>
-const categories=[
+
+const categories = [
  ['योग एवं प्राणायाम','🧘'],
  ['आयुर्वेद एवं घरेलू नुस्खे','🌿'],
  ['जन्मदिवस शुभकामनाएँ','🎂'],
@@ -146,16 +367,44 @@ const categories=[
  ['संगठन के कार्यक्रम एवं गतिविधियाँ','🤝']
 ];
 
-document.getElementById('categories').innerHTML=
-categories.map(item=>`
- <div class="category" onclick="alert('इस कैटेगरी के पोस्टर अगले चरण में जोड़े जाएँगे।')">
-  <div class="icon">${item[1]}</div>
-  <div>
-   <h3>${item[0]}</h3>
-   <p>पोस्टर देखें →</p>
-  </div>
- </div>
-`).join('');
+const container = document.getElementById('categories');
+
+categories.forEach((item,index) => {
+
+ const card = document.createElement('div');
+ card.className = 'category-card';
+
+ const icon = document.createElement('div');
+ icon.className = 'category-icon';
+ icon.textContent = item[1];
+
+ const info = document.createElement('div');
+ info.className = 'category-info';
+
+ const heading = document.createElement('h3');
+ heading.textContent = item[0];
+
+ const caption = document.createElement('p');
+ caption.textContent = 'पोस्टर देखें  →';
+
+ info.appendChild(heading);
+ info.appendChild(caption);
+
+ card.appendChild(icon);
+ card.appendChild(info);
+
+ card.addEventListener('click',() => {
+  alert('इस कैटेगरी के पोस्टर अगले चरण में जोड़े जाएँगे।');
+ });
+
+ container.appendChild(card);
+
+});
+
+function adminLogin() {
+ alert('सुरक्षित एडमिन लॉगिन अगले चरण में बनाया जाएगा।');
+}
+
 </script>
 
 </body>
