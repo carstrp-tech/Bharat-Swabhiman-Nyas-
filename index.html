@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123d2c">
+<title>भारत स्वाभिमान न्यास</title>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:'Hind',sans-serif;
+ background:#f6f3eb;
+ color:#18382a;
+ padding-bottom:75px;
+}
+header{
+ background:linear-gradient(135deg,#0d3022,#20563c);
+ color:white;padding:17px 15px 20px;
+ border-radius:0 0 25px 25px;
+ box-shadow:0 5px 20px #0002;
+}
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{
+ width:45px;height:45px;border:1px solid #d9b45d;
+ border-radius:50%;display:grid;place-items:center;
+ color:#f2d38a;font-size:25px;
+}
+.brand h1{font-size:18px;line-height:1.2}
+.brand small{font-size:10px;color:#e8d6a9;letter-spacing:1px}
+.admin{
+ background:linear-gradient(135deg,#f1d38c,#c49a45);
+ border:0;border-radius:20px;padding:9px 13px;
+ color:#193a29;font-weight:700;font-family:inherit;
+}
+.hero{
+ margin-top:18px;height:185px;border-radius:18px;
+ border:1px solid #d7b55f;
+ background:linear-gradient(135deg,#244f39,#102d21);
+ display:flex;flex-direction:column;align-items:center;
+ justify-content:center;text-align:center;color:#f5dfac;
+ padding:15px;
+}
+.hero .om{font-size:40px}
+.hero h2{font-size:17px;margin-top:7px}
+.hero p{font-size:11px;color:#e3d2aa;margin-top:4px}
+main{padding:21px 14px}
+.heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.heading h2{font-size:20px;color:#17442e}
+.heading span{font-size:11px;color:#9a7a3d}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.category{
+ background:white;border:1px solid #e9e0cf;
+ border-radius:16px;padding:14px 10px;
+ min-height:105px;display:flex;align-items:center;gap:10px;
+ box-shadow:0 4px 13px #173c2910;
+}
+.icon{
+ min-width:43px;height:43px;border-radius:13px;
+ background:#f5eedc;display:grid;place-items:center;
+ font-size:22px;
+}
+.category h3{font-size:13px;line-height:1.35;color:#214632}
+.category p{font-size:10px;color:#a1844e;margin-top:4px}
+footer{
+ background:#103727;color:white;text-align:center;
+ padding:17px;margin-top:15px;
+}
+footer strong{display:block;font-size:16px}
+footer span{font-size:12px;color:#e4c77f}
+.bottom{
+ position:fixed;bottom:0;left:0;right:0;
+ background:white;display:flex;justify-content:space-around;
+ padding:10px 3px 12px;box-shadow:0 -3px 15px #0001;
+}
+.bottom div{text-align:center;color:#77857b;font-size:10px}
+.bottom b{display:block;font-size:19px;font-weight:400}
+.bottom .active{color:#17442e;font-weight:700}
+@media(min-width:600px){
+ body{max-width:520px;margin:auto}
+ .grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="top">
+  <div class="brand">
+   <div class="logo">ॐ</div>
+   <div>
+    <h1>भारत स्वाभिमान न्यास</h1>
+    <small>UTTAR PRADESH WEST</small>
+   </div>
+  </div>
+  <button class="admin" onclick="alert('एडमिन लॉगिन अगले चरण में जोड़ा जाएगा।')">
+   एडमिन लॉगिन
+  </button>
+ </div>
+
+ <section class="hero">
+  <div class="om">🕉️</div>
+  <h2>स्वामी रामदेव जी एवं आचार्य बालकृष्ण जी</h2>
+  <p>मुख्य फोटो अगले चरण में जोड़ी जाएगी</p>
+ </section>
+</header>
+
+<main>
+ <div class="heading">
+  <h2>पोस्टर कैटेगरी</h2>
+  <span>अपनी पसंद चुनें</span>
+ </div>
+
+ <div class="grid" id="categories"></div>
+
+ <footer>
+  <strong>Rohit Pundeer</strong>
+  <span>State Office Incharge</span>
+ </footer>
+</main>
+
+<nav class="bottom">
+ <div class="active"><b>⌂</b>होम</div>
+ <div><b>▦</b>कैटेगरी</div>
+ <div><b>▣</b>मेरे पोस्टर</div>
+ <div><b>♙</b>प्रोफाइल</div>
+</nav>
+
+<script>
+const categories=[
+ ['योग एवं प्राणायाम','🧘'],
+ ['आयुर्वेद एवं घरेलू नुस्खे','🌿'],
+ ['जन्मदिवस शुभकामनाएँ','🎂'],
+ ['जड़ी-बूटी दिवस','🍃'],
+ ['विशेष दिवस एवं राष्ट्रीय पर्व','🇮🇳'],
+ ['सनातन संस्कृति एवं धर्म','🕉️'],
+ ['राष्ट्रीय त्योहार एवं देशभक्ति','🏵️'],
+ ['हिंदू त्योहार एवं उत्सव','🪔'],
+ ['सुविचार एवं प्रेरणादायक संदेश','✨'],
+ ['पर्यावरण एवं प्रकृति','🌳'],
+ ['योग शिक्षक एवं प्रशिक्षण','📿'],
+ ['संगठन के कार्यक्रम एवं गतिविधियाँ','🤝']
+];
+
+document.getElementById('categories').innerHTML=
+categories.map(item=>`
+ <div class="category" onclick="alert('इस कैटेगरी के पोस्टर अगले चरण में जोड़े जाएँगे।')">
+  <div class="icon">${item[1]}</div>
+  <div>
+   <h3>${item[0]}</h3>
+   <p>पोस्टर देखें →</p>
+  </div>
+ </div>
+`).join('');
+</script>
+
+</body>
+</html>
