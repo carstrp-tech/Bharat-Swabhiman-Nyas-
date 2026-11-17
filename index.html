@@ -1,21 +1,737 @@
 
-<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bharat Swabhiman Poster Studio</title><link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"><style>
-*{box-sizing:border-box}body{margin:0;background:#f1f2f7;color:#292929;font-family:Hind,sans-serif;padding-bottom:70px}button,input,select{font:inherit}button{cursor:pointer}.header{background:#606060;color:#fff;text-align:center;padding:20px 12px}.brand{display:flex;justify-content:center;align-items:center;gap:14px}.logo{width:58px;height:58px;border:1px solid #aaa;border-radius:50%}.brand h1{font:700 20px Poppins;margin:0}.brand p{margin:2px 0;color:#ffb16f;text-align:left;font-size:17px}.orange{background:#ff7900;color:#fff;border:0;border-radius:28px;padding:11px 22px}.admin-btn{margin-top:15px}.menu{display:flex;gap:8px;overflow:auto;padding:14px 12px;white-space:nowrap}.menu button{border:0;background:#fff;border-radius:22px;padding:9px 14px}.hero{height:180px}.wrap{max-width:1000px;margin:auto;padding:18px 14px}.heading{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px}.heading h2{font-size:22px;margin:0}.heading span{color:#888}.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.cat{display:flex;align-items:center;gap:10px;text-align:left;border:1px solid #eee;border-radius:18px;background:#fff;padding:14px 10px;min-height:100px}.ico{background:#fff0e2;border-radius:14px;padding:10px;font-size:24px}.cat b{font-size:14px;line-height:1.3}.posters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.poster{background:#fff;border-radius:15px;overflow:hidden}.poster img{width:100%;aspect-ratio:1;object-fit:cover;display:block}.poster div{padding:10px}.poster small{color:#888}.panel{display:none;background:#fff;border-radius:16px;padding:18px;margin-top:24px}.field{margin:12px 0}.field label{display:block;font-weight:600;margin-bottom:5px}.field input,.field select{width:100%;padding:11px;border:1px solid #ddd;border-radius:9px;background:#fff}.muted{color:#777;font-size:13px}.footer{background:#111;color:#bbb;text-align:center;padding:28px 10px;margin-top:28px}.footer h3{font:700 20px Poppins;color:#ff7900;margin:0}.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:10px;z-index:5}.bottom a{text-decoration:none;color:#888;text-align:center;font-size:12px}.bottom span{display:block;font-size:21px}.bottom a:first-child{color:#ff7900}.overlay{display:none;position:fixed;inset:0;background:#0009;z-index:10;align-items:center;justify-content:center;padding:15px}.modal{background:white;border-radius:16px;padding:20px;width:100%;max-width:480px;max-height:90vh;overflow:auto}.actions{display:flex;gap:10px;margin-top:15px}.actions button{flex:1}.grey{border:0;background:#eee;border-radius:25px;padding:10px}.preview{width:100%;display:block;border:1px solid #ddd}.adminlist{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.adminlist img{width:100%;aspect-ratio:1;object-fit:cover}.empty{padding:30px;text-align:center;color:#888;background:#fff;border:1px dashed #ccc;border-radius:16px}.hidden{display:none!important}@media(min-width:700px){.cats{grid-template-columns:repeat(3,1fr)}.posters{grid-template-columns:repeat(3,1fr)}.hero{height:260px}.bottom{display:none}body{padding-bottom:0}}
-</style></head><body>
-<header class="header" id="home"><div class="brand"><div class="logo"></div><div><h1>Bharat Swabhiman Trust</h1><p>Uttar Pradesh West</p></div></div><button class="orange admin-btn" id="adminBtn">♟ Admin Login</button></header><nav class="menu" id="menu"></nav><div class="hero"></div>
-<main class="wrap" id="categories"><div class="heading"><h2>पोस्टर कैटेगरी</h2><span>अपनी पसंद चुनें</span></div><div class="cats" id="cats"></div><section style="margin-top:32px" id="posters"><div class="heading"><h2 id="postTitle">नए पोस्टर</h2><span id="postCount">लोड हो रहे हैं...</span></div><div class="posters" id="posterGrid"></div><div class="empty hidden" id="empty">अभी कोई पोस्टर उपलब्ध नहीं है।</div></section>
-<section class="panel" id="dashboard"><h2>Admin Dashboard</h2><p class="muted">यहाँ से 1:1 पोस्टर अपलोड करें।</p><div class="field"><label>पोस्टर का नाम</label><input id="title" placeholder="पोस्टर का नाम"></div><div class="field"><label>कैटेगरी</label><select id="category"></select></div><div class="field"><label>पोस्टर इमेज (1:1)</label><input id="posterFile" type="file" accept="image/jpeg,image/png,image/webp"></div><button class="orange" id="upload">पोस्टर अपलोड करें</button><p class="muted" id="status"></p><hr><h3>अपलोड किए गए पोस्टर</h3><div class="adminlist" id="adminList"></div><button class="grey" id="logout">Logout</button></section></main>
-<footer class="footer"><h3>Rohit Pundeer</h3><p>State Office Incharge</p><p style="margin-top:16px">© 2026 Bharat Swabhiman Trust - UP West</p></footer><nav class="bottom"><a href="#home"><span>⌂</span>Home</a><a href="#categories"><span>▦</span>Categories</a><a href="#posters"><span>▣</span>Posters</a><a href="#home" id="profile"><span>♙</span>Profile</a></nav>
-<div class="overlay" id="loginBox"><div class="modal"><h2>Admin Login</h2><div class="field"><label>Email</label><input id="email" type="email" autocomplete="username"></div><div class="field"><label>Password</label><input id="password" type="password" autocomplete="current-password"></div><p class="muted" id="loginError"></p><div class="actions"><button class="grey" id="cancelLogin">रद्द करें</button><button class="orange" id="login">Login</button></div></div></div>
-<div class="overlay" id="detailsBox"><div class="modal"><h2>अपनी जानकारी भरें</h2><p class="muted">मूल पोस्टर ऊपर 1:1 रहेगा और आपकी जानकारी उसके नीचे आएगी।</p><div class="field"><label>अपनी फोटो</label><input id="personPhoto" type="file" accept="image/*"></div><div class="field"><label>नाम</label><input id="personName"></div><div class="field"><label>पद</label><input id="personRole"></div><div class="field"><label>जिला</label><input id="personDistrict"></div><div class="field"><label>राज्य</label><input id="personState"></div><div class="field"><label>मोबाइल नंबर (वैकल्पिक)</label><input id="personMobile" maxlength="10" inputmode="numeric"></div><div class="actions"><button class="grey" id="cancelDetails">रद्द करें</button><button class="orange" id="make">पोस्टर तैयार करें</button></div></div></div>
-<div class="overlay" id="resultBox"><div class="modal"><h2>आपका पोस्टर तैयार है</h2><canvas id="canvas" class="preview"></canvas><div class="actions"><button class="orange" id="download">डाउनलोड</button><button class="orange" id="share">शेयर</button></div><button class="grey" id="closeResult" style="width:100%;margin-top:12px">बंद करें</button></div></div>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bharat Swabhiman Poster Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f1f2f7;color:#292929;font-family:Hind,sans-serif;padding-bottom:70px}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.header{background:#606060;color:#fff;text-align:center;padding:20px 12px}
+.brand{display:flex;justify-content:center;align-items:center;gap:14px}
+.logo{width:58px;height:58px;border:1px solid #aaa;border-radius:50%}
+.brand h1{font:700 20px Poppins;margin:0}
+.brand p{margin:2px 0;color:#ffb16f;text-align:left;font-size:17px}
+.orange{background:#ff7900;color:#fff;border:0;border-radius:28px;padding:11px 22px}
+.admin-btn{margin-top:15px}
+.menu{display:flex;gap:8px;overflow:auto;padding:14px 12px;white-space:nowrap}
+.menu button{border:0;background:#fff;border-radius:22px;padding:9px 14px}
+.hero{height:180px}
+.wrap{max-width:1000px;margin:auto;padding:18px 14px}
+.heading{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px}
+.heading h2{font-size:22px;margin:0}
+.heading span{color:#888}
+.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cat{display:flex;align-items:center;gap:10px;text-align:left;border:1px solid #eee;border-radius:18px;background:#fff;padding:14px 10px;min-height:100px}
+.ico{background:#fff0e2;border-radius:14px;padding:10px;font-size:24px}
+.cat b{font-size:14px;line-height:1.3}
+.posters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.poster{background:#fff;border-radius:15px;overflow:hidden}
+.poster img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.poster div{padding:10px}
+.poster small{color:#888}
+.panel{display:none;background:#fff;border-radius:16px;padding:18px;margin-top:24px}
+.field{margin:12px 0}
+.field label{display:block;font-weight:600;margin-bottom:5px}
+.field input,.field select{width:100%;padding:11px;border:1px solid #ddd;border-radius:9px;background:#fff}
+.muted{color:#777;font-size:13px}
+.footer{background:#111;color:#bbb;text-align:center;padding:28px 10px;margin-top:28px}
+.footer h3{font:700 20px Poppins;color:#ff7900;margin:0}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:10px;z-index:5}
+.bottom a{text-decoration:none;color:#888;text-align:center;font-size:12px}
+.bottom span{display:block;font-size:21px}
+.bottom a:first-child{color:#ff7900}
+.overlay{display:none;position:fixed;inset:0;background:#0009;z-index:10;align-items:center;justify-content:center;padding:15px}
+.modal{background:white;border-radius:16px;padding:20px;width:100%;max-width:480px;max-height:90vh;overflow:auto}
+.actions{display:flex;gap:10px;margin-top:15px}
+.actions button{flex:1}
+.grey{border:0;background:#eee;border-radius:25px;padding:10px}
+.preview{width:100%;display:block;border:1px solid #ddd}
+.adminlist{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.adminlist img{width:100%;aspect-ratio:1;object-fit:cover}
+.empty{padding:30px;text-align:center;color:#888;background:#fff;border:1px dashed #ccc;border-radius:16px}
+.hidden{display:none!important}
+@media(min-width:700px){
+.cats{grid-template-columns:repeat(3,1fr)}
+.posters{grid-template-columns:repeat(3,1fr)}
+.hero{height:260px}
+.bottom{display:none}
+body{padding-bottom:0}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header" id="home">
+ <div class="brand">
+  <div class="logo"></div>
+  <div>
+   <h1>Bharat Swabhiman Trust</h1>
+   <p>Uttar Pradesh West</p>
+  </div>
+ </div>
+ <button class="orange admin-btn" id="adminBtn">♟ Admin Login</button>
+</header>
+
+<nav class="menu" id="menu"></nav>
+<div class="hero"></div>
+
+<main class="wrap" id="categories">
+
+ <div class="heading">
+  <h2>पोस्टर कैटेगरी</h2>
+  <span>अपनी पसंद चुनें</span>
+ </div>
+
+ <div class="cats" id="cats"></div>
+
+ <section style="margin-top:32px" id="posters">
+  <div class="heading">
+   <h2 id="postTitle">नए पोस्टर</h2>
+   <span id="postCount">लोड हो रहे हैं...</span>
+  </div>
+  <div class="posters" id="posterGrid"></div>
+  <div class="empty hidden" id="empty">अभी कोई पोस्टर उपलब्ध नहीं है।</div>
+ </section>
+
+ <section class="panel" id="dashboard">
+  <h2>Admin Dashboard</h2>
+  <p class="muted">यहाँ से 1:1 पोस्टर अपलोड करें।</p>
+
+  <div class="field">
+   <label>पोस्टर का नाम</label>
+   <input id="title" placeholder="पोस्टर का नाम">
+  </div>
+
+  <div class="field">
+   <label>कैटेगरी</label>
+   <select id="category"></select>
+  </div>
+
+  <div class="field">
+   <label>पोस्टर इमेज (1:1)</label>
+   <input id="posterFile" type="file" accept="image/jpeg,image/png,image/webp">
+  </div>
+
+  <button class="orange" id="upload">पोस्टर अपलोड करें</button>
+  <p class="muted" id="status"></p>
+
+  <hr>
+  <h3>अपलोड किए गए पोस्टर</h3>
+  <div class="adminlist" id="adminList"></div>
+  <button class="grey" id="logout">Logout</button>
+ </section>
+
+</main>
+
+<footer class="footer">
+ <h3>Rohit Pundeer</h3>
+ <p>State Office Incharge</p>
+ <p style="margin-top:16px">© 2026 Bharat Swabhiman Trust - UP West</p>
+</footer>
+
+<nav class="bottom">
+ <a href="#home"><span>⌂</span>Home</a>
+ <a href="#categories"><span>▦</span>Categories</a>
+ <a href="#posters"><span>▣</span>Posters</a>
+ <a href="#home" id="profile"><span>♙</span>Profile</a>
+</nav>
+
+<!-- ADMIN LOGIN -->
+<div class="overlay" id="loginBox">
+ <div class="modal">
+  <h2>Admin Login</h2>
+  <div class="field">
+   <label>Email</label>
+   <input id="email" type="email" autocomplete="username">
+  </div>
+  <div class="field">
+   <label>Password</label>
+   <input id="password" type="password" autocomplete="current-password">
+  </div>
+  <p class="muted" id="loginError"></p>
+  <div class="actions">
+   <button class="grey" id="cancelLogin">रद्द करें</button>
+   <button class="orange" id="login">Login</button>
+  </div>
+ </div>
+</div>
+
+<!-- USER DETAILS -->
+<div class="overlay" id="detailsBox">
+ <div class="modal">
+  <h2>अपनी जानकारी भरें</h2>
+  <p class="muted">मूल पोस्टर ऊपर 1:1 रहेगा और आपकी जानकारी उसके नीचे आएगी।</p>
+
+  <div class="field">
+   <label>अपनी फोटो</label>
+   <input id="personPhoto" type="file" accept="image/*">
+  </div>
+
+  <div class="field">
+   <label>नाम</label>
+   <input id="personName" placeholder="अपना नाम लिखें">
+  </div>
+
+  <div class="field">
+   <label>पद</label>
+   <input id="personRole" placeholder="अपना पद लिखें">
+  </div>
+
+  <div class="field">
+   <label>जिला</label>
+   <input id="personDistrict" placeholder="अपना जिला लिखें">
+  </div>
+
+  <div class="field">
+   <label>राज्य</label>
+   <input id="personState" value="उत्तर प्रदेश पश्चिम">
+  </div>
+
+  <div class="field">
+   <label>मोबाइल नंबर (वैकल्पिक)</label>
+   <input id="personMobile" maxlength="10" inputmode="numeric">
+  </div>
+
+  <div class="actions">
+   <button class="grey" id="cancelDetails">रद्द करें</button>
+   <button class="orange" id="make">पोस्टर तैयार करें</button>
+  </div>
+ </div>
+</div>
+
+<!-- GENERATED POSTER -->
+<div class="overlay" id="resultBox">
+ <div class="modal">
+  <h2>आपका पोस्टर तैयार है</h2>
+  <canvas id="canvas" class="preview"></canvas>
+  <div class="actions">
+   <button class="orange" id="download">डाउनलोड</button>
+   <button class="orange" id="share">शेयर</button>
+  </div>
+  <button class="grey" id="closeResult" style="width:100%;margin-top:12px">बंद करें</button>
+ </div>
+</div>
+
 <script type="module">
-import{initializeApp}from'https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js';import{getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut}from'https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js';import{getFirestore,collection,addDoc,getDocs,deleteDoc,doc,serverTimestamp}from'https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js';
-const app=initializeApp({apiKey:'AIzaSyC9Lc77TONOdTvIwqDjSiVmKZS1RIO9uiw',authDomain:'bharat-swabhiman-nyas.firebaseapp.com',projectId:'bharat-swabhiman-nyas',storageBucket:'bharat-swabhiman-nyas.firebasestorage.app',messagingSenderId:'1053707957987',appId:'1:1053707957987:web:5561ae0cba693d4542f7d6'});const auth=getAuth(app),db=getFirestore(app),ADMIN_UID='RDlfMgDIFhgoTwNMVMHLTJ9aLhN2',CLOUD='hkmavckp',PRESET='bharat_swabhiman_upload';const $=id=>document.getElementById(id);let user=null,posters=[],chosen=null,blob=null;function modal(id,on){$(id).style.display=on?'flex':'none'}
-const cats=[['योग एवं प्राणायाम','🧘'],['आयुर्वेद एवं घरेलू नुस्खे','🌿'],['जन्मदिवस शुभकामनाएँ','🎂'],['जड़ी-बूटी दिवस','🍃'],['विशेष दिवस एवं राष्ट्रीय पर्व','🇮🇳'],['सनातन संस्कृति एवं धर्म','🕉️'],['राष्ट्रीय त्योहार एवं देशभक्ति','🏵️'],['हिंदू त्योहार एवं उत्सव','🪔'],['सुविचार एवं प्रेरणादायक संदेश','✨'],['पर्यावरण एवं प्रकृति','🌳'],['योग शिक्षक एवं प्रशिक्षण','📿'],['संगठन के कार्यक्रम एवं गतिविधियाँ','🤝']];cats.forEach(([n,e])=>{let b=document.createElement('button');b.className='cat';b.innerHTML='<span class="ico">'+e+'</span><b></b>';b.querySelector('b').textContent=n;b.onclick=()=>filter(n);$('cats').append(b);let m=document.createElement('button');m.textContent=n;m.onclick=()=>filter(n);$('menu').append(m);let o=document.createElement('option');o.value=n;o.textContent=n;$('category').append(o)});
-function filter(n){$('postTitle').textContent=n;$('posters').scrollIntoView({behavior:'smooth'});render(posters.filter(p=>p.category===n))}function render(items){$('posterGrid').innerHTML='';$('postCount').textContent=items.length+' पोस्टर';$('empty').classList.toggle('hidden',items.length>0);items.forEach(p=>{let c=document.createElement('article');c.className='poster';let im=document.createElement('img');im.src=p.imageUrl;let d=document.createElement('div'),b=document.createElement('b'),s=document.createElement('small'),btn=document.createElement('button');b.textContent=p.title;s.textContent=p.category;btn.textContent='अपना पोस्टर बनाएँ';btn.className='orange';btn.onclick=()=>{chosen=p;modal('detailsBox',true)};d.append(b,document.createElement('br'),s,document.createElement('br'),btn);c.append(im,d);$('posterGrid').append(c)})}async function load(){try{let snap=await getDocs(collection(db,'posters'));posters=snap.docs.map(x=>({id:x.id,...x.data()})).filter(x=>x.imageUrl&&x.category);render(posters);adminList()}catch(e){$('postCount').textContent='डेटा लोड नहीं हुआ';console.error(e)}}function adminList(){$('adminList').innerHTML='';if(!user)return;posters.forEach(p=>{let d=document.createElement('div'),im=document.createElement('img'),t=document.createElement('p'),b=document.createElement('button');im.src=p.imageUrl;t.textContent=p.title;b.textContent='हटाएँ';b.className='grey';b.onclick=async()=>{if(confirm('इस पोस्टर को हटाएँ?')){await deleteDoc(doc(db,'posters',p.id));await load()}};d.append(im,t,b);$('adminList').append(d)})}
-$('adminBtn').onclick=()=>modal('loginBox',true);$('profile').onclick=e=>{e.preventDefault();modal('loginBox',true)};$('cancelLogin').onclick=()=>modal('loginBox',false);$('login').onclick=async()=>{try{let r=await signInWithEmailAndPassword(auth,$('email').value.trim(),$('password').value);if(r.user.uid!==ADMIN_UID){await signOut(auth);throw Error('यह अकाउंट एडमिन के लिए अधिकृत नहीं है।')}modal('loginBox',false)}catch(e){$('loginError').textContent=e.message}};onAuthStateChanged(auth,u=>{user=u&&u.uid===ADMIN_UID?u:null;$('dashboard').style.display=user?'block':'none';$('adminBtn').textContent=user?'Admin Dashboard':'♟ Admin Login';adminList()});$('logout').onclick=()=>signOut(auth);
-$('upload').onclick=async()=>{let file=$('posterFile').files[0],title=$('title').value.trim(),category=$('category').value;if(!user)return alert('पहले एडमिन लॉगिन करें');if(!file||!title||!category)return alert('नाम, कैटेगरी और फोटो चुनें');if(file.size>10*1024*1024)return alert('फोटो 10 MB से छोटी रखें');$('upload').disabled=true;$('status').textContent='अपलोड हो रहा है...';try{let fd=new FormData();fd.append('file',file);fd.append('upload_preset',PRESET);let res=await fetch('https://api.cloudinary.com/v1_1/'+CLOUD+'/image/upload',{method:'POST',body:fd}),data=await res.json();if(!res.ok)throw Error(data.error?.message||'Upload error');await addDoc(collection(db,'posters'),{title,category,imageUrl:data.secure_url,createdAt:serverTimestamp()});$('status').textContent='पोस्टर अपलोड हो गया';$('title').value='';$('posterFile').value='';await load()}catch(e){$('status').textContent='त्रुटि: '+e.message}finally{$('upload').disabled=false}};
-function imgLoad(src){return new Promise((ok,no)=>{let i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src})}$('cancelDetails').onclick=()=>modal('detailsBox',false);$('make').onclick=async()=>{let name=$('personName').value.trim(),role=$('personRole').value.trim(),district=$('personDistrict').value.trim(),state=$('personState').value.trim(),mobile=$('personMobile').value.trim(),pf=$('personPhoto').files[0];if(!name||!role||!district||!state||!pf)return alert('फोटो, नाम, पद, जिला और राज्य भरें');if(mobile&&!/^\d{10}$/.test(mobile))return alert('मोबाइल नंबर 10 अंकों का होना चाहिए');try{let [poster,photo]=await Promise.all([imgLoad(chosen.imageUrl),imgLoad(URL.createObjectURL(pf))]);let c=$('canvas'),ctx=c.getContext('2d');c.width=1080;c.height=1340;ctx.fillStyle='#fff';ctx.fillRect(0,0,1080,1340);ctx.drawImage(poster,0,0,1080,1080);ctx.fillStyle='#ff7900';ctx.fillRect(0,1080,1080,8);ctx.drawImage(photo,42,1110,180,180);ctx.fillStyle='#222';ctx.font='bold 42px Hind';ctx.fillText(name,250,1160,780);ctx.fillStyle='#ff7900';ctx.font='30px Hind';ctx.fillText(role,250,1205,780);ctx.fillStyle='#444';ctx.font='27px Hind';ctx.fillText('जिला: '+district,250,1250,350);ctx.fillText('राज्य: '+state,620,1250,400);if(mobile)ctx.fillText('मोबाइल: '+mobile,250,1300,700);blob=await new Promise(ok=>c.toBlob(ok,'image/jpeg',.94));modal('detailsBox',false);modal('resultBox',true)}catch(e){alert('पोस्टर नहीं बन पाया। फोटो फिर से चुनें।');console.error(e)}};
-$('download').onclick=()=>{if(!blob)return;let u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='Bharat-Swabhiman-Poster.jpg';a.click();setTimeout(()=>URL.revokeObjectURL(u),2000)};$('share').onclick=async()=>{if(!blob)return;let f=new File([blob],'Bharat-Swabhiman-Poster.jpg',{type:'image/jpeg'});try{if(navigator.canShare&&navigator.canShare({files:[f]}))await navigator.share({files:[f],title:'मेरा पोस्टर'});else $('download').click()}catch(e){console.log(e)}};$('closeResult').onclick=()=>modal('resultBox',false);load();
-</script></body></html>
+
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js';
+
+import {
+ getAuth,
+ signInWithEmailAndPassword,
+ onAuthStateChanged,
+ signOut
+} from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js';
+
+import {
+ getFirestore,
+ collection,
+ addDoc,
+ getDocs,
+ deleteDoc,
+ doc,
+ serverTimestamp
+} from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js';
+
+const app = initializeApp({
+ apiKey:'AIzaSyC9Lc77TONOdTvIwqDjSiVmKZS1RIO9uiw',
+ authDomain:'bharat-swabhiman-nyas.firebaseapp.com',
+ projectId:'bharat-swabhiman-nyas',
+ storageBucket:'bharat-swabhiman-nyas.firebasestorage.app',
+ messagingSenderId:'1053707957987',
+ appId:'1:1053707957987:web:5561ae0cba693d4542f7d6'
+});
+
+const auth=getAuth(app);
+const db=getFirestore(app);
+
+const ADMIN_UID='RDlfMgDIFhgoTwNMVMHLTJ9aLhN2';
+const CLOUD='hkmavckp';
+const PRESET='bharat_swabhiman_upload';
+
+const $=id=>document.getElementById(id);
+
+let user=null;
+let posters=[];
+let chosen=null;
+let blob=null;
+
+function modal(id,on){
+ $(id).style.display=on?'flex':'none';
+}
+
+const cats=[
+ ['योग एवं प्राणायाम','🧘'],
+ ['आयुर्वेद एवं घरेलू नुस्खे','🌿'],
+ ['जन्मदिवस शुभकामनाएँ','🎂'],
+ ['जड़ी-बूटी दिवस','🍃'],
+ ['विशेष दिवस एवं राष्ट्रीय पर्व','🇮🇳'],
+ ['सनातन संस्कृति एवं धर्म','🕉️'],
+ ['राष्ट्रीय त्योहार एवं देशभक्ति','🏵️'],
+ ['हिंदू त्योहार एवं उत्सव','🪔'],
+ ['सुविचार एवं प्रेरणादायक संदेश','✨'],
+ ['पर्यावरण एवं प्रकृति','🌳'],
+ ['योग शिक्षक एवं प्रशिक्षण','📿'],
+ ['संगठन के कार्यक्रम एवं गतिविधियाँ','🤝']
+];
+
+cats.forEach(([n,e])=>{
+
+ let b=document.createElement('button');
+ b.className='cat';
+ b.innerHTML='<span class="ico">'+e+'</span><b></b>';
+ b.querySelector('b').textContent=n;
+ b.onclick=()=>filter(n);
+ $('cats').append(b);
+
+ let m=document.createElement('button');
+ m.textContent=n;
+ m.onclick=()=>filter(n);
+ $('menu').append(m);
+
+ let o=document.createElement('option');
+ o.value=n;
+ o.textContent=n;
+ $('category').append(o);
+
+});
+
+function filter(n){
+ $('postTitle').textContent=n;
+ $('posters').scrollIntoView({behavior:'smooth'});
+ render(posters.filter(p=>p.category===n));
+}
+
+function render(items){
+
+ $('posterGrid').innerHTML='';
+ $('postCount').textContent=items.length+' पोस्टर';
+ $('empty').classList.toggle('hidden',items.length>0);
+
+ items.forEach(p=>{
+
+  let c=document.createElement('article');
+  c.className='poster';
+
+  let im=document.createElement('img');
+  im.src=p.imageUrl;
+  im.alt=p.title;
+
+  let d=document.createElement('div');
+  let b=document.createElement('b');
+  let s=document.createElement('small');
+  let btn=document.createElement('button');
+
+  b.textContent=p.title;
+  s.textContent=p.category;
+  btn.textContent='अपना पोस्टर बनाएँ';
+  btn.className='orange';
+
+  btn.onclick=()=>{
+   chosen=p;
+   modal('detailsBox',true);
+  };
+
+  d.append(b,document.createElement('br'),s,document.createElement('br'),btn);
+  c.append(im,d);
+  $('posterGrid').append(c);
+
+ });
+
+}
+
+async function load(){
+
+ try{
+
+  let snap=await getDocs(collection(db,'posters'));
+
+  posters=snap.docs.map(x=>({
+   id:x.id,
+   ...x.data()
+  })).filter(x=>x.imageUrl&&x.category);
+
+  render(posters);
+  adminList();
+
+ }catch(e){
+
+  $('postCount').textContent='डेटा लोड नहीं हुआ';
+  console.error(e);
+
+ }
+
+}
+
+function adminList(){
+
+ $('adminList').innerHTML='';
+ if(!user)return;
+
+ posters.forEach(p=>{
+
+  let d=document.createElement('div');
+  let im=document.createElement('img');
+  let t=document.createElement('p');
+  let b=document.createElement('button');
+
+  im.src=p.imageUrl;
+  t.textContent=p.title;
+  b.textContent='हटाएँ';
+  b.className='grey';
+
+  b.onclick=async()=>{
+
+   if(confirm('इस पोस्टर को हटाएँ?')){
+    await deleteDoc(doc(db,'posters',p.id));
+    await load();
+   }
+
+  };
+
+  d.append(im,t,b);
+  $('adminList').append(d);
+
+ });
+
+}
+
+/* ADMIN LOGIN */
+
+$('adminBtn').onclick=()=>modal('loginBox',true);
+
+$('profile').onclick=e=>{
+ e.preventDefault();
+ modal('loginBox',true);
+};
+
+$('cancelLogin').onclick=()=>modal('loginBox',false);
+
+$('login').onclick=async()=>{
+
+ try{
+
+  let r=await signInWithEmailAndPassword(
+   auth,
+   $('email').value.trim(),
+   $('password').value
+  );
+
+  if(r.user.uid!==ADMIN_UID){
+   await signOut(auth);
+   throw Error('यह अकाउंट एडमिन के लिए अधिकृत नहीं है।');
+  }
+
+  modal('loginBox',false);
+
+ }catch(e){
+
+  $('loginError').textContent=e.message;
+
+ }
+
+};
+
+onAuthStateChanged(auth,u=>{
+
+ user=u&&u.uid===ADMIN_UID?u:null;
+
+ $('dashboard').style.display=user?'block':'none';
+
+ $('adminBtn').textContent=user?'Admin Dashboard':'♟ Admin Login';
+
+ adminList();
+
+});
+
+$('logout').onclick=()=>signOut(auth);
+
+/* CLOUDINARY POSTER UPLOAD */
+
+$('upload').onclick=async()=>{
+
+ let file=$('posterFile').files[0];
+ let title=$('title').value.trim();
+ let category=$('category').value;
+
+ if(!user)return alert('पहले एडमिन लॉगिन करें');
+
+ if(!file||!title||!category){
+  return alert('नाम, कैटेगरी और फोटो चुनें');
+ }
+
+ if(file.size>10*1024*1024){
+  return alert('फोटो 10 MB से छोटी रखें');
+ }
+
+ $('upload').disabled=true;
+ $('status').textContent='अपलोड हो रहा है...';
+
+ try{
+
+  let fd=new FormData();
+  fd.append('file',file);
+  fd.append('upload_preset',PRESET);
+
+  let res=await fetch(
+   'https://api.cloudinary.com/v1_1/'+CLOUD+'/image/upload',
+   {method:'POST',body:fd}
+  );
+
+  let data=await res.json();
+
+  if(!res.ok){
+   throw Error(data.error?.message||'Upload error');
+  }
+
+  await addDoc(collection(db,'posters'),{
+   title,
+   category,
+   imageUrl:data.secure_url,
+   createdAt:serverTimestamp()
+  });
+
+  $('status').textContent='पोस्टर अपलोड हो गया';
+  $('title').value='';
+  $('posterFile').value='';
+
+  await load();
+
+ }catch(e){
+
+  $('status').textContent='त्रुटि: '+e.message;
+
+ }finally{
+
+  $('upload').disabled=false;
+
+ }
+
+};
+
+/*
+  IMAGE LOADING FIX:
+  Cloudinary image पर crossOrigin anonymous
+  src सेट करने से पहले लगाया जाता है।
+*/
+
+function imgLoad(src,useCors=false){
+
+ return new Promise((ok,no)=>{
+
+  let i=new Image();
+
+  if(useCors){
+   i.crossOrigin='anonymous';
+  }
+
+  i.onload=()=>ok(i);
+  i.onerror=()=>no(new Error('Image load failed'));
+
+  i.src=src;
+
+ });
+
+}
+
+/* CREATE PERSONALIZED POSTER */
+
+$('cancelDetails').onclick=()=>modal('detailsBox',false);
+
+$('make').onclick=async()=>{
+
+ let name=$('personName').value.trim();
+ let role=$('personRole').value.trim();
+ let district=$('personDistrict').value.trim();
+ let state=$('personState').value.trim();
+ let mobile=$('personMobile').value.trim();
+ let pf=$('personPhoto').files[0];
+
+ if(!chosen){
+  return alert('पहले पोस्टर चुनें');
+ }
+
+ if(!name||!role||!district||!state||!pf){
+  return alert('फोटो, नाम, पद, जिला और राज्य भरें');
+ }
+
+ if(mobile&&!/^\d{10}$/.test(mobile)){
+  return alert('मोबाइल नंबर 10 अंकों का होना चाहिए');
+ }
+
+ $('make').disabled=true;
+ $('make').textContent='पोस्टर तैयार हो रहा है...';
+
+ let photoUrl=URL.createObjectURL(pf);
+
+ try{
+
+  /*
+   * मुख्य पोस्टर Cloudinary से CORS के साथ लोड होगा।
+   * व्यक्ति की फोटो लोकल फाइल से लोड होगी।
+   */
+
+  let [poster,photo]=await Promise.all([
+   imgLoad(chosen.imageUrl,true),
+   imgLoad(photoUrl,false)
+  ]);
+
+  let c=$('canvas');
+  let ctx=c.getContext('2d');
+
+  /*
+   * ऊपर मूल पोस्टर 1080 x 1080 यानी 1:1
+   * नीचे अलग व्यक्तिगत जानकारी का हिस्सा।
+   */
+
+  c.width=1080;
+  c.height=1340;
+
+  ctx.fillStyle='#ffffff';
+  ctx.fillRect(0,0,1080,1340);
+
+  /* MAIN 1:1 POSTER */
+
+  ctx.drawImage(poster,0,0,1080,1080);
+
+  /* SEPARATOR */
+
+  ctx.fillStyle='#ff7900';
+  ctx.fillRect(0,1080,1080,8);
+
+  /* PERSONAL PHOTO */
+
+  ctx.save();
+
+  ctx.beginPath();
+  ctx.arc(132,1200,88,0,Math.PI*2);
+  ctx.closePath();
+  ctx.clip();
+
+  ctx.drawImage(photo,44,1112,176,176);
+
+  ctx.restore();
+
+  /* PERSONAL DETAILS */
+
+  ctx.fillStyle='#222222';
+  ctx.font='bold 42px Hind, sans-serif';
+  ctx.fillText(name,250,1160,780);
+
+  ctx.fillStyle='#ff7900';
+  ctx.font='30px Hind, sans-serif';
+  ctx.fillText(role,250,1205,780);
+
+  ctx.fillStyle='#444444';
+  ctx.font='27px Hind, sans-serif';
+
+  ctx.fillText('जिला: '+district,250,1250,350);
+  ctx.fillText('राज्य: '+state,620,1250,400);
+
+  if(mobile){
+   ctx.fillText('मोबाइल: '+mobile,250,1300,700);
+  }
+
+  blob=await new Promise((ok,no)=>{
+
+   c.toBlob(result=>{
+    if(result)ok(result);
+    else no(new Error('Image export failed'));
+   },'image/jpeg',0.94);
+
+  });
+
+  if(!blob){
+   throw new Error('पोस्टर फाइल नहीं बन पाई');
+  }
+
+  modal('detailsBox',false);
+  modal('resultBox',true);
+
+ }catch(e){
+
+  console.error(e);
+
+  alert('पोस्टर नहीं बन पाया। कृपया दोबारा कोशिश करें।');
+
+ }finally{
+
+  URL.revokeObjectURL(photoUrl);
+  $('make').disabled=false;
+  $('make').textContent='पोस्टर तैयार करें';
+
+ }
+
+};
+
+/* DOWNLOAD */
+
+$('download').onclick=()=>{
+
+ if(!blob)return;
+
+ let u=URL.createObjectURL(blob);
+ let a=document.createElement('a');
+
+ a.href=u;
+ a.download='Bharat-Swabhiman-Poster.jpg';
+ a.click();
+
+ setTimeout(()=>URL.revokeObjectURL(u),2000);
+
+};
+
+/* SHARE */
+
+$('share').onclick=async()=>{
+
+ if(!blob)return;
+
+ let f=new File(
+  [blob],
+  'Bharat-Swabhiman-Poster.jpg',
+  {type:'image/jpeg'}
+ );
+
+ try{
+
+  if(navigator.canShare&&navigator.canShare({files:[f]})){
+
+   await navigator.share({
+    files:[f],
+    title:'मेरा पोस्टर'
+   });
+
+  }else{
+
+   $('download').click();
+
+   alert('पोस्टर डाउनलोड हो गया है। अब इसे WhatsApp या Facebook पर शेयर करें।');
+
+  }
+
+ }catch(e){
+
+  console.log(e);
+
+ }
+
+};
+
+$('closeResult').onclick=()=>modal('resultBox',false);
+
+/* START */
+
+load();
+
+</script>
+</body>
+</html>
