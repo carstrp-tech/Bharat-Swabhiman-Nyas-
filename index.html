@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#606060">
 <title>Bharat Swabhiman Trust - Poster Studio</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,541 +15,291 @@
   --orange:#ff7900;
   --header:#606060;
   --background:#f1f2f7;
-  --white:#ffffff;
+  --white:#fff;
   --text:#292929;
 }
-
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html {
-  scroll-behavior:smooth;
-}
-
-body {
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
   font-family:'Hind',sans-serif;
   background:var(--background);
   color:var(--text);
   padding-bottom:78px;
 }
-
-/* HEADER */
-
-.header {
+.header{
   background:var(--header);
   padding:15px 14px;
   text-align:center;
   color:white;
   box-shadow:0 3px 12px #0002;
 }
-
-.brand {
+.brand{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:12px;
 }
-
-.logo-space {
-  width:48px;
-  height:48px;
+.logo-space{
+  width:48px;height:48px;
   border-radius:50%;
-  background:transparent;
   border:1px solid #ffffff40;
   flex-shrink:0;
 }
-
-.brand h1 {
+.brand h1{
   font-family:'Poppins',sans-serif;
-  font-size:19px;
-  font-weight:700;
-  text-align:left;
+  font-size:19px;font-weight:700;text-align:left;
 }
-
-.brand p {
-  color:#ff9a43;
-  font-size:12px;
-  text-align:left;
+.brand p{color:#ff9a43;font-size:12px;text-align:left}
+.admin-btn{
+  margin-top:11px;background:var(--orange);
+  color:white;border:0;padding:9px 23px;
+  border-radius:30px;font-size:14px;
+  font-weight:600;cursor:pointer;
 }
-
-.admin-btn {
-  margin-top:11px;
-  background:var(--orange);
-  color:white;
-  border:0;
-  padding:9px 23px;
-  border-radius:30px;
-  font-size:14px;
-  font-weight:600;
-  cursor:pointer;
+.category-menu{
+  padding:19px 12px;display:flex;
+  flex-wrap:wrap;justify-content:center;gap:9px;
 }
-
-/* CATEGORY MENU */
-
-.category-menu {
-  padding:19px 12px;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:9px;
-}
-
-.menu-btn {
-  background:white;
-  color:#333;
-  border:0;
-  padding:10px 17px;
-  border-radius:30px;
+.menu-btn{
+  background:white;color:#333;border:0;
+  padding:10px 17px;border-radius:30px;
   box-shadow:0 5px 14px #00000012;
-  font-size:13px;
-  font-family:'Hind',sans-serif;
+  font-size:13px;font-family:'Hind',sans-serif;
   cursor:pointer;
-  transition:.2s;
 }
-
-.menu-btn.active {
-  background:var(--orange);
-  color:white;
+.menu-btn.active{background:var(--orange);color:white}
+.hero{width:100%;height:220px;background:transparent}
+.container{max-width:1000px;margin:auto;padding:22px 15px}
+.section-heading{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:15px;
 }
-
-/* MAIN PHOTO SPACE */
-
-.hero {
-  width:100%;
-  height:220px;
-  background:transparent;
-}
-
-/* MAIN CONTENT */
-
-.container {
-  max-width:1000px;
-  margin:auto;
-  padding:22px 15px;
-}
-
-.section-heading {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
-
-.section-heading h2 {
-  font-size:20px;
-  font-weight:700;
-}
-
-.section-heading span {
-  font-size:12px;
-  color:#888;
-}
-
-/* CATEGORY CARDS */
-
-.category-grid {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+.section-heading h2{font-size:20px;font-weight:700}
+.section-heading span{font-size:12px;color:#888}
+.category-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
   gap:12px;
 }
-
-.category-card {
-  background:white;
-  border-radius:16px;
-  padding:14px 10px;
-  min-height:100px;
-  display:flex;
-  align-items:center;
-  gap:10px;
+.category-card{
+  background:white;border-radius:16px;
+  padding:14px 10px;min-height:100px;
+  display:flex;align-items:center;gap:10px;
   border:1px solid #e9e9e9;
   box-shadow:0 4px 14px #00000009;
-  cursor:pointer;
-  text-align:left;
-  transition:.2s;
+  cursor:pointer;text-align:left;
 }
-
-.category-card:active {
-  transform:scale(.97);
+.category-card:active{transform:scale(.97)}
+.category-icon{
+  width:43px;height:43px;min-width:43px;
+  border-radius:13px;background:#fff0e2;
+  display:grid;place-items:center;font-size:23px;
 }
-
-.category-icon {
-  width:43px;
-  height:43px;
-  min-width:43px;
-  border-radius:13px;
-  background:#fff0e2;
-  display:grid;
-  place-items:center;
-  font-size:23px;
+.category-card h3{font-size:13px;line-height:1.4;font-weight:600}
+.category-card p{font-size:10px;color:#999;margin-top:4px}
+.poster-section{margin-top:28px}
+.empty-box{
+  background:white;border-radius:16px;
+  padding:30px 15px;text-align:center;
+  color:#888;border:1px dashed #ccc;
 }
-
-.category-card h3 {
-  font-size:13px;
-  line-height:1.4;
-  font-weight:600;
+.empty-box .symbol{font-size:35px;margin-bottom:8px}
+.empty-box h3{color:#444;font-size:15px}
+.empty-box p{font-size:12px;margin-top:5px}
+.footer{
+  background:#111;color:white;text-align:center;
+  padding:22px 15px;margin-top:20px;
 }
-
-.category-card p {
-  font-size:10px;
-  color:#999;
-  margin-top:4px;
-}
-
-/* POSTER SECTION */
-
-.poster-section {
-  margin-top:28px;
-}
-
-.empty-box {
-  background:white;
-  border-radius:16px;
-  padding:30px 15px;
-  text-align:center;
-  color:#888;
-  border:1px dashed #ccc;
-}
-
-.empty-box .symbol {
-  font-size:35px;
-  margin-bottom:8px;
-}
-
-.empty-box h3 {
-  color:#444;
-  font-size:15px;
-}
-
-.empty-box p {
-  font-size:12px;
-  margin-top:5px;
-}
-
-/* FOOTER */
-
-.footer {
-  background:#111;
-  color:white;
-  text-align:center;
-  padding:22px 15px;
-  margin-top:20px;
-}
-
-.footer h3 {
-  color:var(--orange);
-  font-family:'Poppins',sans-serif;
+.footer h3{
+  color:var(--orange);font-family:'Poppins',sans-serif;
   font-size:16px;
 }
-
-.footer p {
-  color:#bbb;
-  font-size:12px;
-  margin-top:5px;
-}
-
-.footer small {
-  display:block;
-  color:#777;
-  margin-top:14px;
-}
-
-/* BOTTOM NAVIGATION */
-
-.bottom-nav {
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:white;
-  display:flex;
-  justify-content:space-around;
+.footer p{color:#bbb;font-size:12px;margin-top:5px}
+.footer small{display:block;color:#777;margin-top:14px}
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;
+  background:white;display:flex;justify-content:space-around;
   padding:9px 4px calc(9px + env(safe-area-inset-bottom));
-  box-shadow:0 -3px 15px #00000012;
-  z-index:100;
+  box-shadow:0 -3px 15px #00000012;z-index:100;
 }
-
-.nav-item {
-  flex:1;
-  text-align:center;
-  color:#888;
-  font-size:11px;
-  text-decoration:none;
-  cursor:pointer;
+.nav-item{
+  flex:1;text-align:center;color:#888;
+  font-size:11px;text-decoration:none;cursor:pointer;
 }
+.nav-item span{display:block;font-size:21px;margin-bottom:2px}
+.nav-item.active{color:var(--orange);font-weight:700}
 
-.nav-item span {
-  display:block;
-  font-size:21px;
-  margin-bottom:2px;
+/* LOGIN WINDOW */
+.auth-overlay{
+  display:none;position:fixed;inset:0;
+  background:#0009;z-index:300;
+  align-items:center;justify-content:center;padding:18px;
 }
-
-.nav-item.active {
-  color:var(--orange);
-  font-weight:700;
+.auth-box{
+  background:white;width:100%;max-width:390px;
+  border-radius:18px;padding:24px;
+  box-shadow:0 15px 45px #0003;
 }
-
-/* RESPONSIVE DESIGN */
-
-@media(min-width:650px) {
-  body {
-    padding-bottom:0;
-  }
-
-  .category-grid {
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .hero {
-    height:330px;
-  }
-
-  .container {
-    padding:28px 24px;
-  }
-
-  .bottom-nav {
-    display:none;
-  }
+.auth-box h2{font-size:21px;margin-bottom:7px}
+.auth-box p{font-size:13px;color:#777;margin-bottom:17px}
+.auth-box label{
+  display:block;font-size:13px;font-weight:600;
+  margin:12px 0 5px;
 }
-
-@media(max-width:360px) {
-  .menu-btn {
-    padding:9px 12px;
-    font-size:12px;
-  }
-
-  .category-card {
-    gap:7px;
-    padding:10px 7px;
-  }
-
-  .category-icon {
-    width:36px;
-    min-width:36px;
-    height:36px;
-  }
+.auth-box input{
+  width:100%;padding:12px;border:1px solid #ddd;
+  border-radius:10px;font:14px 'Hind',sans-serif;
+}
+.auth-actions{display:flex;gap:9px;margin-top:17px}
+.auth-actions button{
+  flex:1;padding:11px;border:0;border-radius:10px;
+  font:600 14px 'Hind',sans-serif;cursor:pointer;
+}
+.auth-submit{background:var(--orange);color:white}
+.auth-cancel{background:#eee;color:#333}
+.auth-error{color:#c62828;font-size:12px;margin-top:10px;min-height:18px}
+.admin-dashboard{
+  display:none;background:white;border-radius:16px;
+  padding:20px;margin:20px auto;border:1px solid #eee;
+}
+.admin-dashboard h2{font-size:20px}
+.admin-dashboard p{font-size:13px;color:#777;margin:6px 0 12px}
+.admin-dashboard button{
+  background:var(--orange);color:white;border:0;
+  border-radius:25px;padding:9px 22px;cursor:pointer;
+}
+@media(min-width:650px){
+  body{padding-bottom:0}
+  .category-grid{grid-template-columns:repeat(3,1fr)}
+  .hero{height:330px}
+  .container{padding:28px 24px}
+  .bottom-nav{display:none}
+}
+@media(max-width:360px){
+  .menu-btn{padding:9px 12px;font-size:12px}
+  .category-card{gap:7px;padding:10px 7px}
+  .category-icon{width:36px;min-width:36px;height:36px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header class="header" id="home">
-
   <div class="brand">
-
     <div class="logo-space"></div>
-
     <div>
       <h1>Bharat Swabhiman Trust</h1>
       <p>Uttar Pradesh West</p>
     </div>
-
   </div>
-
-  <button class="admin-btn" onclick="adminLogin()">
-    ♟ Admin Login
-  </button>
-
+  <button class="admin-btn" onclick="adminLogin()">♟ Admin Login</button>
 </header>
 
-<!-- CATEGORY MENU -->
-
 <nav class="category-menu">
-
-  <button class="menu-btn active" onclick="goHome(this)">
-    Home
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('योग एवं प्राणायाम',this)">
-    योग एवं प्राणायाम
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('आयुर्वेद एवं घरेलू नुस्खे',this)">
-    आयुर्वेद
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('जन्मदिवस शुभकामनाएँ',this)">
-    जन्मदिवस
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('जड़ी-बूटी दिवस',this)">
-    जड़ी-बूटी दिवस
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('विशेष दिवस एवं राष्ट्रीय पर्व',this)">
-    विशेष दिवस
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('सनातन संस्कृति एवं धर्म',this)">
-    सनातन संस्कृति
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('राष्ट्रीय त्योहार एवं देशभक्ति',this)">
-    देशभक्ति
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('हिंदू त्योहार एवं उत्सव',this)">
-    त्योहार एवं उत्सव
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('सुविचार एवं प्रेरणादायक संदेश',this)">
-    सुविचार
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('पर्यावरण एवं प्रकृति',this)">
-    पर्यावरण
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('योग शिक्षक एवं प्रशिक्षण',this)">
-    योग प्रशिक्षण
-  </button>
-
-  <button class="menu-btn" onclick="showCategory('संगठन के कार्यक्रम एवं गतिविधियाँ',this)">
-    संगठन गतिविधियाँ
-  </button>
-
+  <button class="menu-btn active" onclick="goHome(this)">Home</button>
+  <button class="menu-btn" onclick="showCategory('योग एवं प्राणायाम',this)">योग एवं प्राणायाम</button>
+  <button class="menu-btn" onclick="showCategory('आयुर्वेद एवं घरेलू नुस्खे',this)">आयुर्वेद</button>
+  <button class="menu-btn" onclick="showCategory('जन्मदिवस शुभकामनाएँ',this)">जन्मदिवस</button>
+  <button class="menu-btn" onclick="showCategory('जड़ी-बूटी दिवस',this)">जड़ी-बूटी दिवस</button>
+  <button class="menu-btn" onclick="showCategory('विशेष दिवस एवं राष्ट्रीय पर्व',this)">विशेष दिवस</button>
+  <button class="menu-btn" onclick="showCategory('सनातन संस्कृति एवं धर्म',this)">सनातन संस्कृति</button>
+  <button class="menu-btn" onclick="showCategory('राष्ट्रीय त्योहार एवं देशभक्ति',this)">देशभक्ति</button>
+  <button class="menu-btn" onclick="showCategory('हिंदू त्योहार एवं उत्सव',this)">त्योहार एवं उत्सव</button>
+  <button class="menu-btn" onclick="showCategory('सुविचार एवं प्रेरणादायक संदेश',this)">सुविचार</button>
+  <button class="menu-btn" onclick="showCategory('पर्यावरण एवं प्रकृति',this)">पर्यावरण</button>
+  <button class="menu-btn" onclick="showCategory('योग शिक्षक एवं प्रशिक्षण',this)">योग प्रशिक्षण</button>
+  <button class="menu-btn" onclick="showCategory('संगठन के कार्यक्रम एवं गतिविधियाँ',this)">संगठन गतिविधियाँ</button>
 </nav>
-
-<!-- MAIN PHOTO SPACE -->
 
 <section class="hero"></section>
 
-<!-- MAIN CONTENT -->
-
 <main class="container">
-
   <section id="categories">
-
     <div class="section-heading">
       <h2>पोस्टर कैटेगरी</h2>
       <span>अपनी पसंद चुनें</span>
     </div>
-
     <div class="category-grid" id="categoryGrid"></div>
-
   </section>
 
-  <!-- POSTERS -->
-
   <section class="poster-section" id="posters">
-
     <div class="section-heading">
       <h2 id="posterHeading">नए पोस्टर</h2>
       <span>सभी पोस्टर</span>
     </div>
-
     <div class="empty-box">
-
       <div class="symbol">▧</div>
-
       <h3>पोस्टर जल्द उपलब्ध होंगे</h3>
-
-      <p>
-        एडमिन द्वारा अपलोड किए गए पोस्टर यहाँ दिखाई देंगे।
-      </p>
-
+      <p>एडमिन द्वारा अपलोड किए गए पोस्टर यहाँ दिखाई देंगे।</p>
     </div>
-
   </section>
-
 </main>
 
-<!-- FOOTER -->
+<section class="container admin-dashboard" id="adminDashboard">
+  <h2>Admin Dashboard</h2>
+  <p>आप सफलतापूर्वक एडमिन के रूप में लॉगिन हैं।</p>
+  <p>पोस्टर अपलोड और कैटेगरी मैनेजमेंट की सुविधा अगले चरण में जोड़ी जाएगी।</p>
+  <button id="adminLogout" type="button">Logout</button>
+</section>
 
 <footer class="footer">
-
   <h3>Rohit Pundeer</h3>
-
   <p>State Office Incharge</p>
-
-  <small>
-    © 2026 Bharat Swabhiman Trust - UP West
-  </small>
-
+  <small>© 2026 Bharat Swabhiman Trust - UP West</small>
 </footer>
 
-<!-- MOBILE NAVIGATION -->
-
 <nav class="bottom-nav">
-
-  <a class="nav-item active" href="#home">
-    <span>⌂</span>
-    Home
-  </a>
-
-  <a class="nav-item" href="#categories">
-    <span>▦</span>
-    Categories
-  </a>
-
-  <a class="nav-item" href="#posters">
-    <span>▣</span>
-    Posters
-  </a>
-
-  <a class="nav-item" href="#home" onclick="adminLogin();return false">
-    <span>♙</span>
-    Profile
-  </a>
-
+  <a class="nav-item active" href="#home"><span>⌂</span>Home</a>
+  <a class="nav-item" href="#categories"><span>▦</span>Categories</a>
+  <a class="nav-item" href="#posters"><span>▣</span>Posters</a>
+  <a class="nav-item" href="#home" onclick="adminLogin();return false"><span>♙</span>Profile</a>
 </nav>
 
+<!-- ADMIN LOGIN DIALOG -->
+<div class="auth-overlay" id="authOverlay" role="dialog" aria-modal="true">
+  <form class="auth-box" id="adminLoginForm">
+    <h2>Admin Login</h2>
+    <p>केवल अधिकृत एडमिन ही लॉगिन कर सकते हैं।</p>
+    <label for="adminEmail">Email</label>
+    <input id="adminEmail" type="email" autocomplete="username" required placeholder="Admin email">
+    <label for="adminPassword">Password</label>
+    <input id="adminPassword" type="password" autocomplete="current-password" required placeholder="Password">
+    <div class="auth-error" id="authError" aria-live="polite"></div>
+    <div class="auth-actions">
+      <button class="auth-cancel" type="button" id="closeLogin">रद्द करें</button>
+      <button class="auth-submit" type="submit" id="loginSubmit">Login</button>
+    </div>
+  </form>
+</div>
+
 <script>
-
-/* POSTER CATEGORIES */
-
 const categories = [
-
   ['योग एवं प्राणायाम','🧘'],
-
   ['आयुर्वेद एवं घरेलू नुस्खे','🌿'],
-
   ['जन्मदिवस शुभकामनाएँ','🎂'],
-
   ['जड़ी-बूटी दिवस','🍃'],
-
   ['विशेष दिवस एवं राष्ट्रीय पर्व','🇮🇳'],
-
   ['सनातन संस्कृति एवं धर्म','🕉️'],
-
   ['राष्ट्रीय त्योहार एवं देशभक्ति','🏵️'],
-
   ['हिंदू त्योहार एवं उत्सव','🪔'],
-
   ['सुविचार एवं प्रेरणादायक संदेश','✨'],
-
   ['पर्यावरण एवं प्रकृति','🌳'],
-
   ['योग शिक्षक एवं प्रशिक्षण','📿'],
-
   ['संगठन के कार्यक्रम एवं गतिविधियाँ','🤝']
-
 ];
-
-/* CREATE CATEGORY CARDS */
 
 const grid = document.getElementById('categoryGrid');
 
-categories.forEach(function(item) {
-
+categories.forEach(item => {
   const card = document.createElement('button');
-
   card.className = 'category-card';
   card.type = 'button';
 
   const icon = document.createElement('div');
-
   icon.className = 'category-icon';
   icon.textContent = item[1];
 
   const info = document.createElement('div');
-
   const heading = document.createElement('h3');
   heading.textContent = item[0];
 
@@ -559,66 +308,120 @@ categories.forEach(function(item) {
 
   info.appendChild(heading);
   info.appendChild(caption);
-
   card.appendChild(icon);
   card.appendChild(info);
 
-  card.onclick = function() {
-    showCategory(item[0]);
-  };
-
+  card.onclick = () => showCategory(item[0]);
   grid.appendChild(card);
-
 });
 
-/* CATEGORY SELECTION */
-
-function showCategory(name,button) {
-
-  document.getElementById('posterHeading').textContent =
-    name + ' के पोस्टर';
-
-  document.getElementById('posters').scrollIntoView({
-    behavior:'smooth'
-  });
-
-  document.querySelectorAll('.menu-btn').forEach(function(btn) {
-    btn.classList.remove('active');
-  });
-
-  if(button) {
-    button.classList.add('active');
-  }
-
+function showCategory(name,button){
+  document.getElementById('posterHeading').textContent=name+' के पोस्टर';
+  document.getElementById('posters').scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.menu-btn').forEach(btn=>btn.classList.remove('active'));
+  if(button)button.classList.add('active');
 }
 
-/* HOME */
-
-function goHome(button) {
-
-  document.getElementById('posterHeading').textContent =
-    'नए पोस्टर';
-
-  document.getElementById('home').scrollIntoView({
-    behavior:'smooth'
-  });
-
-  document.querySelectorAll('.menu-btn').forEach(function(btn) {
-    btn.classList.remove('active');
-  });
-
+function goHome(button){
+  document.getElementById('posterHeading').textContent='नए पोस्टर';
+  document.getElementById('home').scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.menu-btn').forEach(btn=>btn.classList.remove('active'));
   button.classList.add('active');
-
 }
 
-/* ADMIN LOGIN */
-
-function adminLogin() {
-
-  alert('Firebase Admin Login अगले चरण में जोड़ा जाएगा।');
-
+function adminLogin(){
+  document.getElementById('authError').textContent='';
+  document.getElementById('authOverlay').style.display='flex';
 }
+</script>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC9Lc77TONOdTvIwqDjSiVmKZS1RIO9uiw",
+  authDomain: "bharat-swabhiman-nyas.firebaseapp.com",
+  projectId: "bharat-swabhiman-nyas",
+  storageBucket: "bharat-swabhiman-nyas.firebasestorage.app",
+  messagingSenderId: "1053707957987",
+  appId: "1:1053707957987:web:5561ae0cba693d4542f7d6",
+  measurementId: "G-068V21S5Z9"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+/* केवल इस UID को Admin Dashboard की अनुमति है */
+const ADMIN_UID = "RDlfMgDIFhgoTwNMVMHLTJ9aLhN2";
+
+const overlay = document.getElementById('authOverlay');
+const form = document.getElementById('adminLoginForm');
+const errorBox = document.getElementById('authError');
+const dashboard = document.getElementById('adminDashboard');
+
+document.getElementById('closeLogin').addEventListener('click',()=>{
+  overlay.style.display='none';
+});
+
+overlay.addEventListener('click',event=>{
+  if(event.target===overlay)overlay.style.display='none';
+});
+
+form.addEventListener('submit',async event=>{
+  event.preventDefault();
+
+  const email=document.getElementById('adminEmail').value.trim();
+  const password=document.getElementById('adminPassword').value;
+  const submit=document.getElementById('loginSubmit');
+
+  errorBox.textContent='';
+  submit.disabled=true;
+  submit.textContent='Please wait...';
+
+  try{
+    const credential=await signInWithEmailAndPassword(auth,email,password);
+
+    if(credential.user.uid!==ADMIN_UID){
+      await signOut(auth);
+      throw new Error('यह अकाउंट एडमिन के लिए अधिकृत नहीं है।');
+    }
+
+    overlay.style.display='none';
+    form.reset();
+    dashboard.style.display='block';
+    dashboard.scrollIntoView({behavior:'smooth'});
+
+  }catch(error){
+    const messages={
+      'auth/invalid-credential':'ईमेल या पासवर्ड गलत है।',
+      'auth/invalid-email':'ईमेल पता सही नहीं है।',
+      'auth/too-many-requests':'कई बार प्रयास हुआ है। थोड़ी देर बाद कोशिश करें।',
+      'auth/network-request-failed':'इंटरनेट कनेक्शन जाँचें।'
+    };
+    errorBox.textContent=messages[error.code]||error.message||'लॉगिन नहीं हो पाया।';
+  }finally{
+    submit.disabled=false;
+    submit.textContent='Login';
+  }
+});
+
+document.getElementById('adminLogout').addEventListener('click',async()=>{
+  await signOut(auth);
+});
+
+onAuthStateChanged(auth,user=>{
+  if(user && user.uid===ADMIN_UID){
+    dashboard.style.display='block';
+  }else{
+    dashboard.style.display='none';
+  }
+});
 </script>
 
 </body>
