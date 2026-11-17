@@ -3,426 +3,601 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#606060">
 <title>Bharat Swabhiman Trust - Poster Studio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-:root {
-  --orange:#ff7900;
-  --header:#606060;
-  --background:#f1f2f7;
-  --white:#fff;
-  --text:#292929;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Hind',sans-serif;
-  background:var(--background);
-  color:var(--text);
-  padding-bottom:78px;
-}
-.header{
-  background:var(--header);
-  padding:15px 14px;
-  text-align:center;
-  color:white;
-  box-shadow:0 3px 12px #0002;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-}
-.logo-space{
-  width:48px;height:48px;
-  border-radius:50%;
-  border:1px solid #ffffff40;
-  flex-shrink:0;
-}
-.brand h1{
-  font-family:'Poppins',sans-serif;
-  font-size:19px;font-weight:700;text-align:left;
-}
-.brand p{color:#ff9a43;font-size:12px;text-align:left}
-.admin-btn{
-  margin-top:11px;background:var(--orange);
-  color:white;border:0;padding:9px 23px;
-  border-radius:30px;font-size:14px;
-  font-weight:600;cursor:pointer;
-}
-.category-menu{
-  padding:19px 12px;display:flex;
-  flex-wrap:wrap;justify-content:center;gap:9px;
-}
-.menu-btn{
-  background:white;color:#333;border:0;
-  padding:10px 17px;border-radius:30px;
-  box-shadow:0 5px 14px #00000012;
-  font-size:13px;font-family:'Hind',sans-serif;
-  cursor:pointer;
-}
-.menu-btn.active{background:var(--orange);color:white}
-.hero{width:100%;height:220px;background:transparent}
-.container{max-width:1000px;margin:auto;padding:22px 15px}
-.section-heading{
-  display:flex;justify-content:space-between;
-  align-items:center;margin-bottom:15px;
-}
-.section-heading h2{font-size:20px;font-weight:700}
-.section-heading span{font-size:12px;color:#888}
-.category-grid{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-}
-.category-card{
-  background:white;border-radius:16px;
-  padding:14px 10px;min-height:100px;
-  display:flex;align-items:center;gap:10px;
-  border:1px solid #e9e9e9;
-  box-shadow:0 4px 14px #00000009;
-  cursor:pointer;text-align:left;
-}
-.category-card:active{transform:scale(.97)}
-.category-icon{
-  width:43px;height:43px;min-width:43px;
-  border-radius:13px;background:#fff0e2;
-  display:grid;place-items:center;font-size:23px;
-}
-.category-card h3{font-size:13px;line-height:1.4;font-weight:600}
-.category-card p{font-size:10px;color:#999;margin-top:4px}
-.poster-section{margin-top:28px}
-.empty-box{
-  background:white;border-radius:16px;
-  padding:30px 15px;text-align:center;
-  color:#888;border:1px dashed #ccc;
-}
-.empty-box .symbol{font-size:35px;margin-bottom:8px}
-.empty-box h3{color:#444;font-size:15px}
-.empty-box p{font-size:12px;margin-top:5px}
-.footer{
-  background:#111;color:white;text-align:center;
-  padding:22px 15px;margin-top:20px;
-}
-.footer h3{
-  color:var(--orange);font-family:'Poppins',sans-serif;
-  font-size:16px;
-}
-.footer p{color:#bbb;font-size:12px;margin-top:5px}
-.footer small{display:block;color:#777;margin-top:14px}
-.bottom-nav{
-  position:fixed;bottom:0;left:0;right:0;
-  background:white;display:flex;justify-content:space-around;
-  padding:9px 4px calc(9px + env(safe-area-inset-bottom));
-  box-shadow:0 -3px 15px #00000012;z-index:100;
-}
-.nav-item{
-  flex:1;text-align:center;color:#888;
-  font-size:11px;text-decoration:none;cursor:pointer;
-}
-.nav-item span{display:block;font-size:21px;margin-bottom:2px}
-.nav-item.active{color:var(--orange);font-weight:700}
-
-/* LOGIN WINDOW */
-.auth-overlay{
-  display:none;position:fixed;inset:0;
-  background:#0009;z-index:300;
-  align-items:center;justify-content:center;padding:18px;
-}
-.auth-box{
-  background:white;width:100%;max-width:390px;
-  border-radius:18px;padding:24px;
-  box-shadow:0 15px 45px #0003;
-}
-.auth-box h2{font-size:21px;margin-bottom:7px}
-.auth-box p{font-size:13px;color:#777;margin-bottom:17px}
-.auth-box label{
-  display:block;font-size:13px;font-weight:600;
-  margin:12px 0 5px;
-}
-.auth-box input{
-  width:100%;padding:12px;border:1px solid #ddd;
-  border-radius:10px;font:14px 'Hind',sans-serif;
-}
-.auth-actions{display:flex;gap:9px;margin-top:17px}
-.auth-actions button{
-  flex:1;padding:11px;border:0;border-radius:10px;
-  font:600 14px 'Hind',sans-serif;cursor:pointer;
-}
-.auth-submit{background:var(--orange);color:white}
-.auth-cancel{background:#eee;color:#333}
-.auth-error{color:#c62828;font-size:12px;margin-top:10px;min-height:18px}
-.admin-dashboard{
-  display:none;background:white;border-radius:16px;
-  padding:20px;margin:20px auto;border:1px solid #eee;
-}
-.admin-dashboard h2{font-size:20px}
-.admin-dashboard p{font-size:13px;color:#777;margin:6px 0 12px}
-.admin-dashboard button{
-  background:var(--orange);color:white;border:0;
-  border-radius:25px;padding:9px 22px;cursor:pointer;
-}
+:root{--orange:#ff7900;--bg:#f1f2f7;--dark:#606060}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Hind,sans-serif;background:var(--bg);color:#292929;padding-bottom:75px}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.header{background:var(--dark);color:white;text-align:center;padding:16px}
+.brand{display:flex;justify-content:center;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border:1px solid #ffffff55;border-radius:50%}
+.brand h1{font:700 19px Poppins}
+.brand p{color:#ffae69;text-align:left}
+.orange{background:var(--orange);color:white;border:0;border-radius:30px;padding:10px 23px}
+.admin-btn{margin-top:12px}
+.menu{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;padding:18px 10px}
+.menu button{border:0;border-radius:30px;background:white;padding:10px 15px;box-shadow:0 4px 12px #0001}
+.menu button.active{background:var(--orange);color:white}
+.hero{height:180px}
+.container{max-width:1000px;margin:auto;padding:18px 15px}
+.heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.heading h2{font-size:21px}
+.heading span{color:#888;font-size:13px}
+.category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.category-card{background:white;border:1px solid #eee;border-radius:17px;padding:14px 10px;display:flex;align-items:center;gap:10px;text-align:left;min-height:100px}
+.category-icon{width:43px;height:43px;min-width:43px;border-radius:13px;background:#fff0e2;display:grid;place-items:center;font-size:23px}
+.category-card h3{font-size:14px;line-height:1.4}
+.category-card p{font-size:11px;color:#999}
+.poster-section{margin-top:30px}
+.poster-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.poster-card{background:white;border-radius:15px;overflow:hidden;border:1px solid #eee}
+.poster-card img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.poster-info{padding:10px}
+.poster-info strong{display:block}
+.poster-info small{color:#888}
+.poster-info button{margin-top:8px}
+.panel{background:white;border-radius:16px;padding:18px;margin:20px 0}
+.panel h2{font-size:20px;margin-bottom:10px}
+.field{margin:12px 0}
+.field label{display:block;font-weight:600;font-size:14px;margin-bottom:5px}
+.field input,.field select{width:100%;padding:11px;border:1px solid #ddd;border-radius:9px;background:white}
+.notice{font-size:13px;color:#777;margin:8px 0}
+.admin-dashboard{display:none}
+.admin-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.admin-item{border:1px solid #ddd;border-radius:10px;padding:8px}
+.admin-item img{width:100%;aspect-ratio:1;object-fit:cover}
+.admin-item button{margin-top:6px}
+.btn-danger{background:#c62828;color:white;border:0;border-radius:20px;padding:7px 12px}
+.btn-grey{background:#eee;color:#333;border:0;border-radius:20px;padding:9px 16px}
+.footer{background:#111;color:white;text-align:center;padding:24px;margin-top:25px}
+.footer h3{color:var(--orange);font:700 18px Poppins}
+.footer p{color:#bbb}
+.footer small{display:block;color:#777;margin-top:12px}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 4px;box-shadow:0 -3px 15px #0001;z-index:20}
+.bottom-nav a{text-align:center;color:#888;text-decoration:none;font-size:11px;flex:1}
+.bottom-nav span{display:block;font-size:21px}
+.bottom-nav a.active{color:var(--orange);font-weight:bold}
+.overlay{display:none;position:fixed;inset:0;background:#0009;z-index:50;overflow:auto;padding:18px;align-items:center;justify-content:center}
+.modal{background:white;border-radius:16px;padding:20px;width:100%;max-width:500px;max-height:90vh;overflow:auto}
+.modal h2{margin-bottom:12px}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.modal-actions button{flex:1}
+.preview{width:100%;max-width:420px;margin:12px auto;border:1px solid #ddd}
+.preview canvas{width:100%;display:block}
+.empty{background:white;border:1px dashed #ccc;border-radius:16px;padding:35px 15px;text-align:center;color:#888}
+.hidden{display:none!important}
 @media(min-width:650px){
-  body{padding-bottom:0}
-  .category-grid{grid-template-columns:repeat(3,1fr)}
-  .hero{height:330px}
-  .container{padding:28px 24px}
-  .bottom-nav{display:none}
-}
-@media(max-width:360px){
-  .menu-btn{padding:9px 12px;font-size:12px}
-  .category-card{gap:7px;padding:10px 7px}
-  .category-icon{width:36px;min-width:36px;height:36px}
+ body{padding-bottom:0}
+ .category-grid{grid-template-columns:repeat(3,1fr)}
+ .poster-grid{grid-template-columns:repeat(3,1fr)}
+ .hero{height:280px}
+ .bottom-nav{display:none}
 }
 </style>
 </head>
-
 <body>
 
 <header class="header" id="home">
-  <div class="brand">
-    <div class="logo-space"></div>
-    <div>
-      <h1>Bharat Swabhiman Trust</h1>
-      <p>Uttar Pradesh West</p>
-    </div>
+ <div class="brand">
+  <div class="logo"></div>
+  <div>
+   <h1>Bharat Swabhiman Trust</h1>
+   <p>Uttar Pradesh West</p>
   </div>
-  <button class="admin-btn" onclick="adminLogin()">♟ Admin Login</button>
+ </div>
+ <button class="orange admin-btn" id="openLogin">♟ Admin Login</button>
 </header>
 
-<nav class="category-menu">
-  <button class="menu-btn active" onclick="goHome(this)">Home</button>
-  <button class="menu-btn" onclick="showCategory('योग एवं प्राणायाम',this)">योग एवं प्राणायाम</button>
-  <button class="menu-btn" onclick="showCategory('आयुर्वेद एवं घरेलू नुस्खे',this)">आयुर्वेद</button>
-  <button class="menu-btn" onclick="showCategory('जन्मदिवस शुभकामनाएँ',this)">जन्मदिवस</button>
-  <button class="menu-btn" onclick="showCategory('जड़ी-बूटी दिवस',this)">जड़ी-बूटी दिवस</button>
-  <button class="menu-btn" onclick="showCategory('विशेष दिवस एवं राष्ट्रीय पर्व',this)">विशेष दिवस</button>
-  <button class="menu-btn" onclick="showCategory('सनातन संस्कृति एवं धर्म',this)">सनातन संस्कृति</button>
-  <button class="menu-btn" onclick="showCategory('राष्ट्रीय त्योहार एवं देशभक्ति',this)">देशभक्ति</button>
-  <button class="menu-btn" onclick="showCategory('हिंदू त्योहार एवं उत्सव',this)">त्योहार एवं उत्सव</button>
-  <button class="menu-btn" onclick="showCategory('सुविचार एवं प्रेरणादायक संदेश',this)">सुविचार</button>
-  <button class="menu-btn" onclick="showCategory('पर्यावरण एवं प्रकृति',this)">पर्यावरण</button>
-  <button class="menu-btn" onclick="showCategory('योग शिक्षक एवं प्रशिक्षण',this)">योग प्रशिक्षण</button>
-  <button class="menu-btn" onclick="showCategory('संगठन के कार्यक्रम एवं गतिविधियाँ',this)">संगठन गतिविधियाँ</button>
-</nav>
-
-<section class="hero"></section>
+<nav class="menu" id="menu"></nav>
+<div class="hero"></div>
 
 <main class="container">
-  <section id="categories">
-    <div class="section-heading">
-      <h2>पोस्टर कैटेगरी</h2>
-      <span>अपनी पसंद चुनें</span>
-    </div>
-    <div class="category-grid" id="categoryGrid"></div>
-  </section>
+ <section>
+  <div class="heading">
+   <h2>पोस्टर कैटेगरी</h2>
+   <span>अपनी पसंद चुनें</span>
+  </div>
+  <div class="category-grid" id="categoryGrid"></div>
+ </section>
 
-  <section class="poster-section" id="posters">
-    <div class="section-heading">
-      <h2 id="posterHeading">नए पोस्टर</h2>
-      <span>सभी पोस्टर</span>
-    </div>
-    <div class="empty-box">
-      <div class="symbol">▧</div>
-      <h3>पोस्टर जल्द उपलब्ध होंगे</h3>
-      <p>एडमिन द्वारा अपलोड किए गए पोस्टर यहाँ दिखाई देंगे।</p>
-    </div>
-  </section>
+ <section class="poster-section" id="posters">
+  <div class="heading">
+   <h2 id="posterHeading">नए पोस्टर</h2>
+   <span id="posterCount">लोड हो रहे हैं...</span>
+  </div>
+  <div class="poster-grid" id="posterGrid"></div>
+  <div class="empty hidden" id="emptyPosters">
+   <div style="font-size:35px">▧</div>
+   <h3>अभी कोई पोस्टर उपलब्ध नहीं है</h3>
+   <p>एडमिन द्वारा अपलोड किए गए पोस्टर यहाँ दिखाई देंगे।</p>
+  </div>
+ </section>
+
+ <section class="panel admin-dashboard" id="adminDashboard">
+  <h2>Admin Dashboard</h2>
+  <p class="notice">आप एडमिन के रूप में लॉगिन हैं।</p>
+
+  <h3>नया पोस्टर अपलोड करें</h3>
+  <div class="field">
+   <label>पोस्टर का नाम</label>
+   <input id="posterTitle" placeholder="जैसे: आयुर्वेद के लाभ">
+  </div>
+  <div class="field">
+   <label>पोस्टर कैटेगरी</label>
+   <select id="posterCategory"></select>
+  </div>
+  <div class="field">
+   <label>1:1 पोस्टर इमेज चुनें</label>
+   <input id="posterFile" type="file" accept="image/jpeg,image/png,image/webp">
+  </div>
+  <p class="notice">सुझाया गया आकार: 1080 × 1080 पिक्सल। अधिकतम फाइल साइज: 10 MB।</p>
+  <button class="orange" id="uploadPoster">पोस्टर अपलोड करें</button>
+  <p class="notice" id="uploadStatus"></p>
+
+  <hr style="margin:20px 0;border:0;border-top:1px solid #eee">
+  <h3>अपलोड किए गए पोस्टर</h3>
+  <div class="admin-list" id="adminPosterList"></div>
+  <button class="orange" id="logout" style="margin-top:20px">Logout</button>
+ </section>
 </main>
 
-<section class="container admin-dashboard" id="adminDashboard">
-  <h2>Admin Dashboard</h2>
-  <p>आप सफलतापूर्वक एडमिन के रूप में लॉगिन हैं।</p>
-  <p>पोस्टर अपलोड और कैटेगरी मैनेजमेंट की सुविधा अगले चरण में जोड़ी जाएगी।</p>
-  <button id="adminLogout" type="button">Logout</button>
-</section>
-
 <footer class="footer">
-  <h3>Rohit Pundeer</h3>
-  <p>State Office Incharge</p>
-  <small>© 2026 Bharat Swabhiman Trust - UP West</small>
+ <h3>Rohit Pundeer</h3>
+ <p>State Office Incharge</p>
+ <small>© 2026 Bharat Swabhiman Trust - UP West</small>
 </footer>
 
 <nav class="bottom-nav">
-  <a class="nav-item active" href="#home"><span>⌂</span>Home</a>
-  <a class="nav-item" href="#categories"><span>▦</span>Categories</a>
-  <a class="nav-item" href="#posters"><span>▣</span>Posters</a>
-  <a class="nav-item" href="#home" onclick="adminLogin();return false"><span>♙</span>Profile</a>
+ <a class="active" href="#home"><span>⌂</span>Home</a>
+ <a href="#categories"><span>▦</span>Categories</a>
+ <a href="#posters"><span>▣</span>Posters</a>
+ <a href="#home" id="profileNav"><span>♙</span>Profile</a>
 </nav>
 
-<!-- ADMIN LOGIN DIALOG -->
-<div class="auth-overlay" id="authOverlay" role="dialog" aria-modal="true">
-  <form class="auth-box" id="adminLoginForm">
-    <h2>Admin Login</h2>
-    <p>केवल अधिकृत एडमिन ही लॉगिन कर सकते हैं।</p>
-    <label for="adminEmail">Email</label>
-    <input id="adminEmail" type="email" autocomplete="username" required placeholder="Admin email">
-    <label for="adminPassword">Password</label>
-    <input id="adminPassword" type="password" autocomplete="current-password" required placeholder="Password">
-    <div class="auth-error" id="authError" aria-live="polite"></div>
-    <div class="auth-actions">
-      <button class="auth-cancel" type="button" id="closeLogin">रद्द करें</button>
-      <button class="auth-submit" type="submit" id="loginSubmit">Login</button>
-    </div>
-  </form>
+<!-- LOGIN -->
+<div class="overlay" id="loginOverlay">
+ <div class="modal">
+  <h2>Admin Login</h2>
+  <div class="field">
+   <label>Email</label>
+   <input id="email" type="email" autocomplete="username">
+  </div>
+  <div class="field">
+   <label>Password</label>
+   <input id="password" type="password" autocomplete="current-password">
+  </div>
+  <p class="notice" id="loginError"></p>
+  <div class="modal-actions">
+   <button class="btn-grey" id="closeLogin">रद्द करें</button>
+   <button class="orange" id="login">Login</button>
+  </div>
+ </div>
 </div>
 
-<script>
-const categories = [
-  ['योग एवं प्राणायाम','🧘'],
-  ['आयुर्वेद एवं घरेलू नुस्खे','🌿'],
-  ['जन्मदिवस शुभकामनाएँ','🎂'],
-  ['जड़ी-बूटी दिवस','🍃'],
-  ['विशेष दिवस एवं राष्ट्रीय पर्व','🇮🇳'],
-  ['सनातन संस्कृति एवं धर्म','🕉️'],
-  ['राष्ट्रीय त्योहार एवं देशभक्ति','🏵️'],
-  ['हिंदू त्योहार एवं उत्सव','🪔'],
-  ['सुविचार एवं प्रेरणादायक संदेश','✨'],
-  ['पर्यावरण एवं प्रकृति','🌳'],
-  ['योग शिक्षक एवं प्रशिक्षण','📿'],
-  ['संगठन के कार्यक्रम एवं गतिविधियाँ','🤝']
-];
+<!-- PERSONAL DETAILS -->
+<div class="overlay" id="personalOverlay">
+ <div class="modal">
+  <h2>अपनी जानकारी भरें</h2>
+  <p class="notice">ऊपर मूल पोस्टर 1:1 रहेगा। आपकी जानकारी उसके नीचे अलग पैनल में जुड़ेगी।</p>
+  <div class="field">
+   <label>अपनी फोटो</label>
+   <input type="file" id="personPhoto" accept="image/*">
+  </div>
+  <div class="field">
+   <label>नाम</label>
+   <input id="personName" placeholder="अपना नाम">
+  </div>
+  <div class="field">
+   <label>पद (Designation)</label>
+   <input id="personRole" placeholder="अपना पद">
+  </div>
+  <div class="field">
+   <label>जिला</label>
+   <input id="personDistrict" placeholder="अपना जिला">
+  </div>
+  <div class="field">
+   <label>राज्य</label>
+   <input id="personState" placeholder="अपना राज्य">
+  </div>
+  <div class="field">
+   <label>मोबाइल नंबर</label>
+   <input id="personMobile" type="tel" maxlength="10" placeholder="मोबाइल नंबर">
+  </div>
+  <div class="modal-actions">
+   <button class="btn-grey" id="cancelPersonal">रद्द करें</button>
+   <button class="orange" id="makePoster">पोस्टर तैयार करें</button>
+  </div>
+ </div>
+</div>
 
-const grid = document.getElementById('categoryGrid');
-
-categories.forEach(item => {
-  const card = document.createElement('button');
-  card.className = 'category-card';
-  card.type = 'button';
-
-  const icon = document.createElement('div');
-  icon.className = 'category-icon';
-  icon.textContent = item[1];
-
-  const info = document.createElement('div');
-  const heading = document.createElement('h3');
-  heading.textContent = item[0];
-
-  const caption = document.createElement('p');
-  caption.textContent = 'पोस्टर देखें →';
-
-  info.appendChild(heading);
-  info.appendChild(caption);
-  card.appendChild(icon);
-  card.appendChild(info);
-
-  card.onclick = () => showCategory(item[0]);
-  grid.appendChild(card);
-});
-
-function showCategory(name,button){
-  document.getElementById('posterHeading').textContent=name+' के पोस्टर';
-  document.getElementById('posters').scrollIntoView({behavior:'smooth'});
-  document.querySelectorAll('.menu-btn').forEach(btn=>btn.classList.remove('active'));
-  if(button)button.classList.add('active');
-}
-
-function goHome(button){
-  document.getElementById('posterHeading').textContent='नए पोस्टर';
-  document.getElementById('home').scrollIntoView({behavior:'smooth'});
-  document.querySelectorAll('.menu-btn').forEach(btn=>btn.classList.remove('active'));
-  button.classList.add('active');
-}
-
-function adminLogin(){
-  document.getElementById('authError').textContent='';
-  document.getElementById('authOverlay').style.display='flex';
-}
-</script>
+<!-- FINAL PREVIEW -->
+<div class="overlay" id="previewOverlay">
+ <div class="modal">
+  <h2>आपका तैयार पोस्टर</h2>
+  <p class="notice">ऊपर 1:1 पोस्टर और नीचे आपकी व्यक्तिगत जानकारी।</p>
+  <div class="preview"><canvas id="finalCanvas"></canvas></div>
+  <div class="modal-actions">
+   <button class="orange" id="downloadPoster">डाउनलोड करें</button>
+   <button class="btn-grey" id="sharePoster">शेयर करें</button>
+  </div>
+  <button class="btn-grey" id="closePreview" style="width:100%;margin-top:12px">बंद करें</button>
+ </div>
+</div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
+ getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut
 } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+import {
+ getFirestore,collection,addDoc,getDocs,deleteDoc,doc,
+ query,orderBy,serverTimestamp
+} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC9Lc77TONOdTvIwqDjSiVmKZS1RIO9uiw",
-  authDomain: "bharat-swabhiman-nyas.firebaseapp.com",
-  projectId: "bharat-swabhiman-nyas",
-  storageBucket: "bharat-swabhiman-nyas.firebasestorage.app",
-  messagingSenderId: "1053707957987",
-  appId: "1:1053707957987:web:5561ae0cba693d4542f7d6",
-  measurementId: "G-068V21S5Z9"
+const firebaseConfig={
+ apiKey:"AIzaSyC9Lc77TONOdTvIwqDjSiVmKZS1RIO9uiw",
+ authDomain:"bharat-swabhiman-nyas.firebaseapp.com",
+ projectId:"bharat-swabhiman-nyas",
+ storageBucket:"bharat-swabhiman-nyas.firebasestorage.app",
+ messagingSenderId:"1053707957987",
+ appId:"1:1053707957987:web:5561ae0cba693d4542f7d6",
+ measurementId:"G-068V21S5Z9"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
-/* केवल इस UID को Admin Dashboard की अनुमति है */
-const ADMIN_UID = "RDlfMgDIFhgoTwNMVMHLTJ9aLhN2";
+const ADMIN_UID="RDlfMgDIFhgoTwNMVMHLTJ9aLhN2";
+const CLOUD_NAME="hkmavckp";
+const UPLOAD_PRESET="bharat_swabhiman_upload";
 
-const overlay = document.getElementById('authOverlay');
-const form = document.getElementById('adminLoginForm');
-const errorBox = document.getElementById('authError');
-const dashboard = document.getElementById('adminDashboard');
+const categories=[
+ ["योग एवं प्राणायाम","🧘"],
+ ["आयुर्वेद एवं घरेलू नुस्खे","🌿"],
+ ["जन्मदिवस शुभकामनाएँ","🎂"],
+ ["जड़ी-बूटी दिवस","🍃"],
+ ["विशेष दिवस एवं राष्ट्रीय पर्व","🇮🇳"],
+ ["सनातन संस्कृति एवं धर्म","🕉️"],
+ ["राष्ट्रीय त्योहार एवं देशभक्ति","🏵️"],
+ ["हिंदू त्योहार एवं उत्सव","🪔"],
+ ["सुविचार एवं प्रेरणादायक संदेश","✨"],
+ ["पर्यावरण एवं प्रकृति","🌳"],
+ ["योग शिक्षक एवं प्रशिक्षण","📿"],
+ ["संगठन के कार्यक्रम एवं गतिविधियाँ","🤝"]
+];
 
-document.getElementById('closeLogin').addEventListener('click',()=>{
-  overlay.style.display='none';
-});
+let currentUser=null;
+let allPosters=[];
+let selectedPoster=null;
+let finalBlob=null;
 
-overlay.addEventListener('click',event=>{
-  if(event.target===overlay)overlay.style.display='none';
-});
+const $=id=>document.getElementById(id);
 
-form.addEventListener('submit',async event=>{
-  event.preventDefault();
+function safeText(value){
+ return String(value||"");
+}
 
-  const email=document.getElementById('adminEmail').value.trim();
-  const password=document.getElementById('adminPassword').value;
-  const submit=document.getElementById('loginSubmit');
+function makeCategoryUI(){
+ const menu=$("menu");
+ const grid=$("categoryGrid");
+ const select=$("posterCategory");
 
-  errorBox.textContent='';
-  submit.disabled=true;
-  submit.textContent='Please wait...';
+ menu.innerHTML="";
+ grid.innerHTML="";
+ select.innerHTML='<option value="">कैटेगरी चुनें</option>';
 
-  try{
-    const credential=await signInWithEmailAndPassword(auth,email,password);
+ categories.forEach(([name,emoji])=>{
+  const opt=document.createElement("option");
+  opt.value=name;opt.textContent=name;
+  select.appendChild(opt);
 
-    if(credential.user.uid!==ADMIN_UID){
-      await signOut(auth);
-      throw new Error('यह अकाउंट एडमिन के लिए अधिकृत नहीं है।');
-    }
+  const nav=document.createElement("button");
+  nav.textContent=name;
+  nav.onclick=()=>filterCategory(name);
+  menu.appendChild(nav);
 
-    overlay.style.display='none';
-    form.reset();
-    dashboard.style.display='block';
-    dashboard.scrollIntoView({behavior:'smooth'});
+  const card=document.createElement("button");
+  card.className="category-card";
+  card.innerHTML=`<div class="category-icon">${emoji}</div><div><h3></h3><p>पोस्टर देखें →</p></div>`;
+  card.querySelector("h3").textContent=name;
+  card.onclick=()=>filterCategory(name);
+  grid.appendChild(card);
+ });
+}
 
-  }catch(error){
-    const messages={
-      'auth/invalid-credential':'ईमेल या पासवर्ड गलत है।',
-      'auth/invalid-email':'ईमेल पता सही नहीं है।',
-      'auth/too-many-requests':'कई बार प्रयास हुआ है। थोड़ी देर बाद कोशिश करें।',
-      'auth/network-request-failed':'इंटरनेट कनेक्शन जाँचें।'
-    };
-    errorBox.textContent=messages[error.code]||error.message||'लॉगिन नहीं हो पाया।';
-  }finally{
-    submit.disabled=false;
-    submit.textContent='Login';
+function filterCategory(name){
+ $("posterHeading").textContent=name+" के पोस्टर";
+ renderPosters(allPosters.filter(p=>p.category===name));
+ $("posters").scrollIntoView({behavior:"smooth"});
+}
+
+function renderPosters(items){
+ const grid=$("posterGrid");
+ grid.innerHTML="";
+ $("posterCount").textContent=items.length+" पोस्टर";
+
+ $("emptyPosters").classList.toggle("hidden",items.length>0);
+
+ items.forEach(p=>{
+  const card=document.createElement("article");
+  card.className="poster-card";
+
+  const img=document.createElement("img");
+  img.src=p.imageUrl;
+  img.alt=p.title||"Poster";
+  img.loading="lazy";
+
+  const info=document.createElement("div");
+  info.className="poster-info";
+  const title=document.createElement("strong");
+  title.textContent=p.title||"पोस्टर";
+  const category=document.createElement("small");
+  category.textContent=p.category||"";
+  const button=document.createElement("button");
+  button.className="orange";
+  button.textContent="अपना पोस्टर बनाएँ";
+  button.onclick=()=>openPersonalForm(p);
+
+  info.append(title,category,button);
+  card.append(img,info);
+  grid.appendChild(card);
+ });
+}
+
+async function loadPosters(){
+ try{
+  const q=query(collection(db,"posters"),orderBy("createdAt","desc"));
+  const snap=await getDocs(q);
+  allPosters=snap.docs.map(d=>({id:d.id,...d.data()}))
+   .filter(p=>p.imageUrl&&p.category);
+  renderPosters(allPosters);
+  renderAdminList();
+ }catch(error){
+  console.error(error);
+  $("posterCount").textContent="पोस्टर लोड नहीं हुए";
+  $("emptyPosters").classList.remove("hidden");
+  $("emptyPosters").querySelector("h3").textContent="पोस्टर लोड नहीं हो पाए";
+  $("emptyPosters").querySelector("p").textContent="इंटरनेट या Firebase Rules जाँचें।";
+ }
+}
+
+$("openLogin").onclick=()=>$("loginOverlay").style.display="flex";
+$("profileNav").onclick=e=>{e.preventDefault();$("loginOverlay").style.display="flex"};
+$("closeLogin").onclick=()=>$("loginOverlay").style.display="none";
+
+$("login").onclick=async()=>{
+ $("loginError").textContent="";
+ try{
+  const result=await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);
+  if(result.user.uid!==ADMIN_UID){
+   await signOut(auth);
+   throw new Error("यह अकाउंट एडमिन के लिए अधिकृत नहीं है।");
   }
-});
-
-document.getElementById('adminLogout').addEventListener('click',async()=>{
-  await signOut(auth);
-});
+  $("loginOverlay").style.display="none";
+ }catch(e){
+  $("loginError").textContent=e.message||"Login असफल।";
+ }
+};
 
 onAuthStateChanged(auth,user=>{
-  if(user && user.uid===ADMIN_UID){
-    dashboard.style.display='block';
-  }else{
-    dashboard.style.display='none';
-  }
+ currentUser=user&&user.uid===ADMIN_UID?user:null;
+ $("adminDashboard").style.display=currentUser?"block":"none";
+ $("openLogin").textContent=currentUser?"Admin Dashboard":"♟ Admin Login";
+ renderAdminList();
 });
-</script>
 
-</body>
-</html>
+$("logout").onclick=()=>signOut(auth);
+
+$("uploadPoster").onclick=async()=>{
+ if(!currentUser){alert("पहले Admin Login करें।");return;}
+
+ const title=$("posterTitle").value.trim();
+ const category=$("posterCategory").value;
+ const file=$("posterFile").files[0];
+ const status=$("uploadStatus");
+
+ if(!title||!category||!file){
+  alert("पोस्टर का नाम, कैटेगरी और फोटो चुनें।");return;
+ }
+ if(!["image/jpeg","image/png","image/webp"].includes(file.type)){
+  alert("केवल JPG, PNG या WEBP फाइल चुनें।");return;
+ }
+ if(file.size>10*1024*1024){
+  alert("फाइल 10 MB से छोटी होनी चाहिए।");return;
+ }
+
+ $("uploadPoster").disabled=true;
+ status.textContent="पोस्टर अपलोड हो रहा है...";
+
+ try{
+  const data=new FormData();
+  data.append("file",file);
+  data.append("upload_preset",UPLOAD_PRESET);
+
+  const response=await fetch(
+   `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+   {method:"POST",body:data}
+  );
+  const result=await response.json();
+  if(!response.ok)throw new Error(result.error?.message||"Cloudinary upload failed");
+
+  await addDoc(collection(db,"posters"),{
+   title,
+   category,
+   imageUrl:result.secure_url,
+   publicId:result.public_id,
+   createdAt:serverTimestamp()
+  });
+
+  status.textContent="पोस्टर सफलतापूर्वक अपलोड हो गया!";
+  $("posterTitle").value="";
+  $("posterCategory").value="";
+  $("posterFile").value="";
+  await loadPosters();
+ }catch(e){
+  console.error(e);
+  status.textContent="अपलोड नहीं हुआ: "+e.message;
+ }finally{
+  $("uploadPoster").disabled=false;
+ }
+};
+
+function renderAdminList(){
+ const list=$("adminPosterList");
+ list.innerHTML="";
+ if(!currentUser)return;
+
+ allPosters.forEach(p=>{
+  const item=document.createElement("div");
+  item.className="admin-item";
+  const img=document.createElement("img");
+  img.src=p.imageUrl;
+  const name=document.createElement("p");
+  name.textContent=p.title;
+  const del=document.createElement("button");
+  del.className="btn-danger";
+  del.textContent="वेबसाइट से हटाएँ";
+  del.onclick=()=>deletePoster(p);
+  item.append(img,name,del);
+  list.appendChild(item);
+ });
+}
+
+async function deletePoster(p){
+ if(!currentUser)return;
+ if(!confirm("क्या आप इस पोस्टर को वेबसाइट की गैलरी से हटाना चाहते हैं?"))return;
+ try{
+  await deleteDoc(doc(db,"posters",p.id));
+  await loadPosters();
+  alert("पोस्टर वेबसाइट से हटा दिया गया।");
+ }catch(e){alert("हटाया नहीं जा सका: "+e.message);}
+}
+
+function openPersonalForm(p){
+ selectedPoster=p;
+ $("personalOverlay").style.display="flex";
+}
+
+$("cancelPersonal").onclick=()=>$("personalOverlay").style.display="none";
+
+function loadImage(file){
+ return new Promise((resolve,reject)=>{
+  const url=URL.createObjectURL(file);
+  const img=new Image();
+  img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};
+  img.onerror=reject;
+  img.src=url;
+ });
+}
+
+function roundedRect(ctx,x,y,w,h,r){
+ ctx.beginPath();
+ ctx.roundRect(x,y,w,h,r);
+}
+
+$("makePoster").onclick=async()=>{
+ if(!selectedPoster)return;
+ const name=$("personName").value.trim();
+ const role=$("personRole").value.trim();
+ const district=$("personDistrict").value.trim();
+ const state=$("personState").value.trim();
+ const mobile=$("personMobile").value.trim();
+ const photoFile=$("personPhoto").files[0];
+
+ if(!name||!role||!district||!state||!photoFile){
+  alert("फोटो, नाम, पद, जिला और राज्य भरना जरूरी है।");return;
+ }
+ if(mobile&&!/^[0-9]{10}$/.test(mobile)){
+  alert("मोबाइल नंबर 10 अंकों का होना चाहिए।");return;
+ }
+
+ try{
+  const poster=await loadImage(selectedPoster.imageUrl);
+  const photo=await loadImage(photoFile);
+
+  const canvas=$("finalCanvas");
+  const width=1080;
+  const posterHeight=1080;
+  const panelHeight=260;
+  canvas.width=width;
+  canvas.height=posterHeight+panelHeight;
+  const ctx=canvas.getContext("2d");
+
+  ctx.fillStyle="#ffffff";
+  ctx.fillRect(0,0,width,canvas.height);
+
+  // मूल पोस्टर हमेशा ऊपर 1:1
+  ctx.drawImage(poster,0,0,width,posterHeight);
+
+  // अलग व्यक्तिगत जानकारी का पैनल
+  ctx.fillStyle="#fff";
+  ctx.fillRect(0,posterHeight,width,panelHeight);
+  ctx.fillStyle="#ff7900";
+  ctx.fillRect(0,posterHeight, width,9);
+
+  // फोटो
+  const px=45,py=posterHeight+35,ps=185;
+  ctx.save();
+  roundedRect(ctx,px,py,ps,ps,18);
+  ctx.clip();
+
+  const scale=Math.max(ps/photo.width,ps/photo.height);
+  const sw=photo.width*scale,sh=photo.height*scale;
+  ctx.drawImage(photo,px+(ps-sw)/2,py+(ps-sh)/2,sw,sh);
+  ctx.restore();
+
+  // टेक्स्ट
+  const tx=265;
+  ctx.fillStyle="#202020";
+  ctx.textAlign="left";
+  ctx.font="bold 43px Hind";
+  ctx.fillText(name,tx,posterHeight+83,770);
+
+  ctx.font="30px Hind";
+  ctx.fillStyle="#ff7900";
+  ctx.fillText(role,tx,posterHeight+128,770);
+
+  ctx.font="27px Hind";
+  ctx.fillStyle="#444";
+  ctx.fillText("जिला: "+district,tx,posterHeight+174,360);
+  ctx.fillText("राज्य: "+state,tx+390,posterHeight+174,370);
+
+  if(mobile){
+   ctx.font="24px Hind";
+   ctx.fillStyle="#555";
+   ctx.fillText("मोबाइल: "+mobile,tx,posterHeight+218,700);
+  }
+
+  finalBlob=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",0.94));
+  $("personalOverlay").style.display="none";
+  $("previewOverlay").style.display="flex";
+ }catch(e){
+  console.error(e);
+  alert("पोस्टर तैयार नहीं हो पाया। दूसरी फोटो चुनकर कोशिश करें।");
+ }
+};
+
+$("downloadPoster").onclick=()=>{
+ if(!finalBlob)return;
+ const url=URL.createObjectURL(finalBlob);
+ const a=document.createElement("a");
+ a.href=url;
+ a.download="Bharat-Swabhiman-Poster.jpg";
+ a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),2000);
+};
+
+$("sharePoster").onclick=async()=>{
+ if(!finalBlob)return;
+ const file=new File([finalBlob],"Bharat-Swabhiman-Poster.jpg",{type:"image/jpeg"});
+ if(navigator.canShare&&navigator.canShare({files:[file]})){
+  try{await navigator.share({files:[file],title:"मेरा पोस्टर"});}
+  catch(e){console.log(e);}
+ }else{
+  alert("इस फोन में सीधे शेयर 
