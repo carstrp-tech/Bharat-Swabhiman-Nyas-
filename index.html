@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bharat Swabhiman Poster Studio</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -84,7 +83,6 @@ body{padding-bottom:0}
 <div class="hero"></div>
 
 <main class="wrap" id="categories">
-
  <div class="heading">
   <h2>पोस्टर कैटेगरी</h2>
   <span>अपनी पसंद चुनें</span>
@@ -128,7 +126,6 @@ body{padding-bottom:0}
   <div class="adminlist" id="adminList"></div>
   <button class="grey" id="logout">Logout</button>
  </section>
-
 </main>
 
 <footer class="footer">
@@ -144,7 +141,6 @@ body{padding-bottom:0}
  <a href="#home" id="profile"><span>♙</span>Profile</a>
 </nav>
 
-<!-- ADMIN LOGIN -->
 <div class="overlay" id="loginBox">
  <div class="modal">
   <h2>Admin Login</h2>
@@ -164,7 +160,6 @@ body{padding-bottom:0}
  </div>
 </div>
 
-<!-- USER DETAILS -->
 <div class="overlay" id="detailsBox">
  <div class="modal">
   <h2>अपनी जानकारी भरें</h2>
@@ -174,27 +169,22 @@ body{padding-bottom:0}
    <label>अपनी फोटो</label>
    <input id="personPhoto" type="file" accept="image/*">
   </div>
-
   <div class="field">
    <label>नाम</label>
    <input id="personName" placeholder="अपना नाम लिखें">
   </div>
-
   <div class="field">
    <label>पद</label>
    <input id="personRole" placeholder="अपना पद लिखें">
   </div>
-
   <div class="field">
    <label>जिला</label>
    <input id="personDistrict" placeholder="अपना जिला लिखें">
   </div>
-
   <div class="field">
    <label>राज्य</label>
    <input id="personState" value="उत्तर प्रदेश पश्चिम">
   </div>
-
   <div class="field">
    <label>मोबाइल नंबर (वैकल्पिक)</label>
    <input id="personMobile" maxlength="10" inputmode="numeric">
@@ -207,7 +197,6 @@ body{padding-bottom:0}
  </div>
 </div>
 
-<!-- GENERATED POSTER -->
 <div class="overlay" id="resultBox">
  <div class="modal">
   <h2>आपका पोस्टर तैयार है</h2>
@@ -221,27 +210,17 @@ body{padding-bottom:0}
 </div>
 
 <script type="module">
-
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js';
 
 import {
- getAuth,
- signInWithEmailAndPassword,
- onAuthStateChanged,
- signOut
+ getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut
 } from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js';
 
 import {
- getFirestore,
- collection,
- addDoc,
- getDocs,
- deleteDoc,
- doc,
- serverTimestamp
+ getFirestore,collection,addDoc,getDocs,deleteDoc,doc,serverTimestamp
 } from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js';
 
-const app = initializeApp({
+const app=initializeApp({
  apiKey:'AIzaSyC9Lc77TONOdTvIwqDjSiVmKZS1RIO9uiw',
  authDomain:'bharat-swabhiman-nyas.firebaseapp.com',
  projectId:'bharat-swabhiman-nyas',
@@ -284,7 +263,6 @@ const cats=[
 ];
 
 cats.forEach(([n,e])=>{
-
  let b=document.createElement('button');
  b.className='cat';
  b.innerHTML='<span class="ico">'+e+'</span><b></b>';
@@ -301,7 +279,6 @@ cats.forEach(([n,e])=>{
  o.value=n;
  o.textContent=n;
  $('category').append(o);
-
 });
 
 function filter(n){
@@ -311,13 +288,11 @@ function filter(n){
 }
 
 function render(items){
-
  $('posterGrid').innerHTML='';
  $('postCount').textContent=items.length+' पोस्टर';
  $('empty').classList.toggle('hidden',items.length>0);
 
  items.forEach(p=>{
-
   let c=document.createElement('article');
   c.className='poster';
 
@@ -343,41 +318,27 @@ function render(items){
   d.append(b,document.createElement('br'),s,document.createElement('br'),btn);
   c.append(im,d);
   $('posterGrid').append(c);
-
  });
-
 }
 
 async function load(){
-
  try{
-
   let snap=await getDocs(collection(db,'posters'));
-
-  posters=snap.docs.map(x=>({
-   id:x.id,
-   ...x.data()
-  })).filter(x=>x.imageUrl&&x.category);
-
+  posters=snap.docs.map(x=>({id:x.id,...x.data()}))
+   .filter(x=>x.imageUrl&&x.category);
   render(posters);
   adminList();
-
  }catch(e){
-
   $('postCount').textContent='डेटा लोड नहीं हुआ';
   console.error(e);
-
  }
-
 }
 
 function adminList(){
-
  $('adminList').innerHTML='';
  if(!user)return;
 
  posters.forEach(p=>{
-
   let d=document.createElement('div');
   let im=document.createElement('img');
   let t=document.createElement('p');
@@ -389,23 +350,18 @@ function adminList(){
   b.className='grey';
 
   b.onclick=async()=>{
-
    if(confirm('इस पोस्टर को हटाएँ?')){
     await deleteDoc(doc(db,'posters',p.id));
     await load();
    }
-
   };
 
   d.append(im,t,b);
   $('adminList').append(d);
-
  });
-
 }
 
 /* ADMIN LOGIN */
-
 $('adminBtn').onclick=()=>modal('loginBox',true);
 
 $('profile').onclick=e=>{
@@ -416,67 +372,44 @@ $('profile').onclick=e=>{
 $('cancelLogin').onclick=()=>modal('loginBox',false);
 
 $('login').onclick=async()=>{
-
  try{
-
   let r=await signInWithEmailAndPassword(
-   auth,
-   $('email').value.trim(),
-   $('password').value
+   auth,$('email').value.trim(),$('password').value
   );
 
   if(r.user.uid!==ADMIN_UID){
    await signOut(auth);
    throw Error('यह अकाउंट एडमिन के लिए अधिकृत नहीं है।');
   }
-
   modal('loginBox',false);
-
  }catch(e){
-
   $('loginError').textContent=e.message;
-
  }
-
 };
 
 onAuthStateChanged(auth,u=>{
-
  user=u&&u.uid===ADMIN_UID?u:null;
-
  $('dashboard').style.display=user?'block':'none';
-
  $('adminBtn').textContent=user?'Admin Dashboard':'♟ Admin Login';
-
  adminList();
-
 });
 
 $('logout').onclick=()=>signOut(auth);
 
 /* CLOUDINARY POSTER UPLOAD */
-
 $('upload').onclick=async()=>{
-
  let file=$('posterFile').files[0];
  let title=$('title').value.trim();
  let category=$('category').value;
 
  if(!user)return alert('पहले एडमिन लॉगिन करें');
-
- if(!file||!title||!category){
-  return alert('नाम, कैटेगरी और फोटो चुनें');
- }
-
- if(file.size>10*1024*1024){
-  return alert('फोटो 10 MB से छोटी रखें');
- }
+ if(!file||!title||!category)return alert('नाम, कैटेगरी और फोटो चुनें');
+ if(file.size>10*1024*1024)return alert('फोटो 10 MB से छोटी रखें');
 
  $('upload').disabled=true;
  $('status').textContent='अपलोड हो रहा है...';
 
  try{
-
   let fd=new FormData();
   fd.append('file',file);
   fd.append('upload_preset',PRESET);
@@ -487,67 +420,39 @@ $('upload').onclick=async()=>{
   );
 
   let data=await res.json();
-
-  if(!res.ok){
-   throw Error(data.error?.message||'Upload error');
-  }
+  if(!res.ok)throw Error(data.error?.message||'Upload error');
 
   await addDoc(collection(db,'posters'),{
-   title,
-   category,
-   imageUrl:data.secure_url,
-   createdAt:serverTimestamp()
+   title,category,imageUrl:data.secure_url,createdAt:serverTimestamp()
   });
 
   $('status').textContent='पोस्टर अपलोड हो गया';
   $('title').value='';
   $('posterFile').value='';
-
   await load();
 
  }catch(e){
-
   $('status').textContent='त्रुटि: '+e.message;
-
  }finally{
-
   $('upload').disabled=false;
-
  }
-
 };
 
-/*
-  IMAGE LOADING FIX:
-  Cloudinary image पर crossOrigin anonymous
-  src सेट करने से पहले लगाया जाता है।
-*/
-
+/* IMAGE LOADER */
 function imgLoad(src,useCors=false){
-
  return new Promise((ok,no)=>{
-
   let i=new Image();
-
-  if(useCors){
-   i.crossOrigin='anonymous';
-  }
-
+  if(useCors)i.crossOrigin='anonymous';
   i.onload=()=>ok(i);
   i.onerror=()=>no(new Error('Image load failed'));
-
   i.src=src;
-
  });
-
 }
 
-/* CREATE PERSONALIZED POSTER */
-
+/* PERSONAL POSTER GENERATOR */
 $('cancelDetails').onclick=()=>modal('detailsBox',false);
 
 $('make').onclick=async()=>{
-
  let name=$('personName').value.trim();
  let role=$('personRole').value.trim();
  let district=$('personDistrict').value.trim();
@@ -555,17 +460,12 @@ $('make').onclick=async()=>{
  let mobile=$('personMobile').value.trim();
  let pf=$('personPhoto').files[0];
 
- if(!chosen){
-  return alert('पहले पोस्टर चुनें');
- }
-
- if(!name||!role||!district||!state||!pf){
+ if(!chosen)return alert('पहले पोस्टर चुनें');
+ if(!name||!role||!district||!state||!pf)
   return alert('फोटो, नाम, पद, जिला और राज्य भरें');
- }
 
- if(mobile&&!/^\d{10}$/.test(mobile)){
+ if(mobile&&!/^\d{10}$/.test(mobile))
   return alert('मोबाइल नंबर 10 अंकों का होना चाहिए');
- }
 
  $('make').disabled=true;
  $('make').textContent='पोस्टर तैयार हो रहा है...';
@@ -573,12 +473,6 @@ $('make').onclick=async()=>{
  let photoUrl=URL.createObjectURL(pf);
 
  try{
-
-  /*
-   * मुख्य पोस्टर Cloudinary से CORS के साथ लोड होगा।
-   * व्यक्ति की फोटो लोकल फाइल से लोड होगी।
-   */
-
   let [poster,photo]=await Promise.all([
    imgLoad(chosen.imageUrl,true),
    imgLoad(photoUrl,false)
@@ -587,112 +481,123 @@ $('make').onclick=async()=>{
   let c=$('canvas');
   let ctx=c.getContext('2d');
 
-  /*
-   * ऊपर मूल पोस्टर 1080 x 1080 यानी 1:1
-   * नीचे अलग व्यक्तिगत जानकारी का हिस्सा।
-   */
-
+  /* Canvas: 1080px square poster + 320px details */
   c.width=1080;
-  c.height=1340;
+  c.height=1400;
 
-  ctx.fillStyle='#ffffff';
-  ctx.fillRect(0,0,1080,1340);
-
-  /* MAIN 1:1 POSTER */
-
+  /* ORIGINAL POSTER - STRICT 1:1 */
   ctx.drawImage(poster,0,0,1080,1080);
 
-  /* SEPARATOR */
+  /* COLORFUL BACKGROUND */
+  let bg=ctx.createLinearGradient(0,1080,1080,1400);
+  bg.addColorStop(0,'#172554');
+  bg.addColorStop(0.55,'#4338a8');
+  bg.addColorStop(1,'#7e22ce');
+  ctx.fillStyle=bg;
+  ctx.fillRect(0,1080,1080,320);
 
-  ctx.fillStyle='#ff7900';
-  ctx.fillRect(0,1080,1080,8);
+  /* ORANGE TOP BORDER */
+  ctx.fillStyle='#ff8a00';
+  ctx.fillRect(0,1080,1080,10);
 
-  /* PERSONAL PHOTO */
-
-  ctx.save();
-
+  /* WHITE PERSONAL DETAILS CARD */
+  ctx.fillStyle='#ffffff';
   ctx.beginPath();
-  ctx.arc(132,1200,88,0,Math.PI*2);
-  ctx.closePath();
+  ctx.roundRect(28,1110,1024,265,28);
+  ctx.fill();
+
+  /* PHOTO ORANGE OUTER RING */
+  ctx.beginPath();
+  ctx.arc(155,1240,100,0,Math.PI*2);
+  ctx.fillStyle='#ff8a00';
+  ctx.fill();
+
+  /* PHOTO WHITE RING */
+  ctx.beginPath();
+  ctx.arc(155,1240,91,0,Math.PI*2);
+  ctx.fillStyle='#ffffff';
+  ctx.fill();
+
+  /* USER PHOTO */
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(155,1240,84,0,Math.PI*2);
   ctx.clip();
-
-  ctx.drawImage(photo,44,1112,176,176);
-
+  ctx.drawImage(photo,71,1156,168,168);
   ctx.restore();
 
-  /* PERSONAL DETAILS */
+  /* NAME */
+  ctx.fillStyle='#172554';
+  ctx.font='bold 48px Hind, sans-serif';
+  ctx.fillText(name,285,1185,720);
 
-  ctx.fillStyle='#222222';
-  ctx.font='bold 42px Hind, sans-serif';
-  ctx.fillText(name,250,1160,780);
+  /* DESIGNATION */
+  ctx.fillStyle='#ea580c';
+  ctx.font='bold 32px Hind, sans-serif';
+  ctx.fillText(role,285,1230,720);
 
-  ctx.fillStyle='#ff7900';
-  ctx.font='30px Hind, sans-serif';
-  ctx.fillText(role,250,1205,780);
+  /* DISTRICT TAG */
+  ctx.fillStyle='#e0e7ff';
+  ctx.beginPath();
+  ctx.roundRect(280,1250,350,52,14);
+  ctx.fill();
 
-  ctx.fillStyle='#444444';
-  ctx.font='27px Hind, sans-serif';
+  ctx.fillStyle='#1e3a8a';
+  ctx.font='bold 25px Hind, sans-serif';
+  ctx.fillText('जिला: '+district,298,1285,315);
 
-  ctx.fillText('जिला: '+district,250,1250,350);
-  ctx.fillText('राज्य: '+state,620,1250,400);
+  /* STATE TAG */
+  ctx.fillStyle='#ffedd5';
+  ctx.beginPath();
+  ctx.roundRect(645,1250,375,52,14);
+  ctx.fill();
 
+  ctx.fillStyle='#9a3412';
+  ctx.font='bold 25px Hind, sans-serif';
+  ctx.fillText('राज्य: '+state,663,1285,340);
+
+  /* MOBILE NUMBER */
   if(mobile){
-   ctx.fillText('मोबाइल: '+mobile,250,1300,700);
+   ctx.fillStyle='#15803d';
+   ctx.font='bold 25px Hind, sans-serif';
+   ctx.fillText('☎  '+mobile,285,1345,700);
   }
 
   blob=await new Promise((ok,no)=>{
-
    c.toBlob(result=>{
     if(result)ok(result);
     else no(new Error('Image export failed'));
    },'image/jpeg',0.94);
-
   });
 
-  if(!blob){
-   throw new Error('पोस्टर फाइल नहीं बन पाई');
-  }
+  if(!blob)throw new Error('पोस्टर फाइल नहीं बन पाई');
 
   modal('detailsBox',false);
   modal('resultBox',true);
 
  }catch(e){
-
   console.error(e);
-
-  alert('पोस्टर नहीं बन पाया। कृपया दोबारा कोशिश करें।');
-
+  alert('ERROR: '+(e.message||e));
  }finally{
-
   URL.revokeObjectURL(photoUrl);
   $('make').disabled=false;
   $('make').textContent='पोस्टर तैयार करें';
-
  }
-
 };
 
 /* DOWNLOAD */
-
 $('download').onclick=()=>{
-
  if(!blob)return;
-
  let u=URL.createObjectURL(blob);
  let a=document.createElement('a');
-
  a.href=u;
  a.download='Bharat-Swabhiman-Poster.jpg';
  a.click();
-
  setTimeout(()=>URL.revokeObjectURL(u),2000);
-
 };
 
 /* SHARE */
-
 $('share').onclick=async()=>{
-
  if(!blob)return;
 
  let f=new File(
@@ -702,36 +607,21 @@ $('share').onclick=async()=>{
  );
 
  try{
-
   if(navigator.canShare&&navigator.canShare({files:[f]})){
-
-   await navigator.share({
-    files:[f],
-    title:'मेरा पोस्टर'
-   });
-
+   await navigator.share({files:[f],title:'मेरा पोस्टर'});
   }else{
-
    $('download').click();
-
    alert('पोस्टर डाउनलोड हो गया है। अब इसे WhatsApp या Facebook पर शेयर करें।');
-
   }
-
  }catch(e){
-
   console.log(e);
-
  }
-
 };
 
 $('closeResult').onclick=()=>modal('resultBox',false);
 
 /* START */
-
 load();
-
 </script>
 </body>
 </html>
