@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bharat Swabhiman Poster Studio</title>
 
-<!-- Android App / PWA settings -->
 <link rel="manifest" href="/Bharat-Swabhiman-Nyas-/app.webmanifest">
 <link rel="icon" type="image/png" href="/Bharat-Swabhiman-Nyas-/app-icon-192.png">
 <meta name="theme-color" content="#ff7900">
@@ -25,14 +24,9 @@ button{cursor:pointer}
 .header{background:#606060;color:#fff;text-align:center;padding:20px 12px}
 .brand{display:flex;justify-content:center;align-items:center;gap:14px}
 .logo{
- width:58px;
- height:58px;
- border:1px solid #aaa;
- border-radius:50%;
- object-fit:cover;
- background:#fff;
- display:block;
- flex-shrink:0;
+ width:58px;height:58px;border:1px solid #aaa;
+ border-radius:50%;object-fit:cover;background:#fff;
+ display:block;flex-shrink:0;
 }
 .brand h1{font:700 20px Poppins;margin:0}
 .brand p{margin:2px 0;color:#ffb16f;text-align:left;font-size:17px}
@@ -41,7 +35,22 @@ button{cursor:pointer}
 .admin-btn{margin-top:15px}
 .menu{display:flex;gap:8px;overflow:auto;padding:14px 12px;white-space:nowrap}
 .menu button{border:0;background:#fff;border-radius:22px;padding:9px 14px}
-.hero{height:180px}
+
+/* SWAMI JI BANNER */
+.hero{
+ width:100%;
+ max-width:1100px;
+ margin:0 auto;
+ background:#f1f2f7;
+ overflow:hidden;
+}
+.hero img{
+ width:100%;
+ height:auto;
+ display:block;
+ object-fit:contain;
+}
+
 .wrap{max-width:1000px;margin:auto;padding:18px 14px}
 .heading{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px}
 .heading h2{font-size:22px;margin:0}
@@ -80,7 +89,6 @@ button{cursor:pointer}
 @media(min-width:700px){
  .cats{grid-template-columns:repeat(3,1fr)}
  .posters{grid-template-columns:repeat(3,1fr)}
- .hero{height:260px}
  .bottom{display:none}
  body{padding-bottom:0}
 }
@@ -104,8 +112,15 @@ button{cursor:pointer}
  <button class="orange admin-btn" id="adminBtn">♟ Admin Login</button>
 </header>
 
+<!-- SWAMI JI PHOTO BANNER -->
+<div class="hero">
+ <img
+  src="/Bharat-Swabhiman-Nyas-/swami-banner.jpg"
+  alt="स्वामी रामदेव जी एवं सहयोगी"
+ >
+</div>
+
 <nav class="menu" id="menu"></nav>
-<div class="hero"></div>
 
 <main class="wrap" id="categories">
  <div class="heading">
@@ -509,10 +524,8 @@ $('make').onclick=async()=>{
   c.width=1080;
   c.height=1400;
 
-  /* ORIGINAL POSTER - STRICT 1:1 */
   ctx.drawImage(poster,0,0,1080,1080);
 
-  /* COLORFUL BACKGROUND */
   let bg=ctx.createLinearGradient(0,1080,1080,1400);
   bg.addColorStop(0,'#172554');
   bg.addColorStop(0.55,'#4338a8');
@@ -520,17 +533,14 @@ $('make').onclick=async()=>{
   ctx.fillStyle=bg;
   ctx.fillRect(0,1080,1080,320);
 
-  /* ORANGE TOP BORDER */
   ctx.fillStyle='#ff8a00';
   ctx.fillRect(0,1080,1080,10);
 
-  /* WHITE PERSONAL DETAILS CARD */
   ctx.fillStyle='#ffffff';
   ctx.beginPath();
   ctx.roundRect(28,1110,1024,265,28);
   ctx.fill();
 
-  /* PHOTO OUTER RING */
   ctx.beginPath();
   ctx.arc(155,1240,100,0,Math.PI*2);
   ctx.fillStyle='#ff8a00';
@@ -541,7 +551,6 @@ $('make').onclick=async()=>{
   ctx.fillStyle='#ffffff';
   ctx.fill();
 
-  /* USER PHOTO */
   ctx.save();
   ctx.beginPath();
   ctx.arc(155,1240,84,0,Math.PI*2);
@@ -549,17 +558,14 @@ $('make').onclick=async()=>{
   ctx.drawImage(photo,71,1156,168,168);
   ctx.restore();
 
-  /* NAME */
   ctx.fillStyle='#172554';
   ctx.font='bold 48px Hind, sans-serif';
   ctx.fillText(name,285,1185,720);
 
-  /* DESIGNATION */
   ctx.fillStyle='#ea580c';
   ctx.font='bold 32px Hind, sans-serif';
   ctx.fillText(role,285,1230,720);
 
-  /* DISTRICT TAG */
   ctx.fillStyle='#e0e7ff';
   ctx.beginPath();
   ctx.roundRect(280,1250,350,52,14);
@@ -569,7 +575,6 @@ $('make').onclick=async()=>{
   ctx.font='bold 25px Hind, sans-serif';
   ctx.fillText('जिला: '+district,298,1285,315);
 
-  /* STATE TAG */
   ctx.fillStyle='#ffedd5';
   ctx.beginPath();
   ctx.roundRect(645,1250,375,52,14);
@@ -579,7 +584,6 @@ $('make').onclick=async()=>{
   ctx.font='bold 25px Hind, sans-serif';
   ctx.fillText('राज्य: '+state,663,1285,340);
 
-  /* MOBILE NUMBER */
   if(mobile){
    ctx.fillStyle='#15803d';
    ctx.font='bold 25px Hind, sans-serif';
