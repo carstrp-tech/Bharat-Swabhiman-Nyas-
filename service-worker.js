@@ -1,12 +1,12 @@
 
-const CACHE_NAME = 'bharat-swabhiman-app-v1';
+const CACHE_NAME = 'bharat-swabhiman-app-v2';
 const APP_ROOT = '/Bharat-Swabhiman-Nyas-/';
 
 const SHELL = [
   APP_ROOT,
   APP_ROOT + 'index.html',
   APP_ROOT + 'app.webmanifest',
-  APP_ROOT + 'app-icon.svg'
+  APP_ROOT + 'app-icon-192.png'
 ];
 
 self.addEventListener('install', event => {
