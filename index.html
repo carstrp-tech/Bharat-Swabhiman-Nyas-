@@ -5,6 +5,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bharat Swabhiman Poster Studio</title>
+
+<!-- Android App / PWA settings -->
+<link rel="manifest" href="app.webmanifest">
+<meta name="theme-color" content="#ff7900">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
 <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -481,7 +489,7 @@ $('make').onclick=async()=>{
   let c=$('canvas');
   let ctx=c.getContext('2d');
 
-  /* Canvas: 1080px square poster + 320px details */
+  /* 1080px square poster + details panel */
   c.width=1080;
   c.height=1400;
 
@@ -506,13 +514,12 @@ $('make').onclick=async()=>{
   ctx.roundRect(28,1110,1024,265,28);
   ctx.fill();
 
-  /* PHOTO ORANGE OUTER RING */
+  /* PHOTO OUTER RING */
   ctx.beginPath();
   ctx.arc(155,1240,100,0,Math.PI*2);
   ctx.fillStyle='#ff8a00';
   ctx.fill();
 
-  /* PHOTO WHITE RING */
   ctx.beginPath();
   ctx.arc(155,1240,91,0,Math.PI*2);
   ctx.fillStyle='#ffffff';
@@ -623,5 +630,21 @@ $('closeResult').onclick=()=>modal('resultBox',false);
 /* START */
 load();
 </script>
+
+<!-- REGISTER ANDROID APP SERVICE WORKER -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register(
+      '/Bharat-Swabhiman-Nyas-/service-worker.js'
+    ).then(function () {
+      console.log('Bharat Swabhiman App Ready');
+    }).catch(function (error) {
+      console.error('App setup error:', error);
+    });
+  });
+}
+</script>
+
 </body>
 </html>
