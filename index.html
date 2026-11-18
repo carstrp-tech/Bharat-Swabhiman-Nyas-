@@ -7,7 +7,8 @@
 <title>Bharat Swabhiman Poster Studio</title>
 
 <!-- Android App / PWA settings -->
-<link rel="manifest" href="app.webmanifest">
+<link rel="manifest" href="/Bharat-Swabhiman-Nyas-/app.webmanifest">
+<link rel="icon" type="image/png" href="/Bharat-Swabhiman-Nyas-/app-icon-192.png">
 <meta name="theme-color" content="#ff7900">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,11 +21,22 @@
 body{margin:0;background:#f1f2f7;color:#292929;font-family:Hind,sans-serif;padding-bottom:70px}
 button,input,select{font:inherit}
 button{cursor:pointer}
+
 .header{background:#606060;color:#fff;text-align:center;padding:20px 12px}
 .brand{display:flex;justify-content:center;align-items:center;gap:14px}
-.logo{width:58px;height:58px;border:1px solid #aaa;border-radius:50%}
+.logo{
+ width:58px;
+ height:58px;
+ border:1px solid #aaa;
+ border-radius:50%;
+ object-fit:cover;
+ background:#fff;
+ display:block;
+ flex-shrink:0;
+}
 .brand h1{font:700 20px Poppins;margin:0}
 .brand p{margin:2px 0;color:#ffb16f;text-align:left;font-size:17px}
+
 .orange{background:#ff7900;color:#fff;border:0;border-radius:28px;padding:11px 22px}
 .admin-btn{margin-top:15px}
 .menu{display:flex;gap:8px;overflow:auto;padding:14px 12px;white-space:nowrap}
@@ -64,12 +76,13 @@ button{cursor:pointer}
 .adminlist img{width:100%;aspect-ratio:1;object-fit:cover}
 .empty{padding:30px;text-align:center;color:#888;background:#fff;border:1px dashed #ccc;border-radius:16px}
 .hidden{display:none!important}
+
 @media(min-width:700px){
-.cats{grid-template-columns:repeat(3,1fr)}
-.posters{grid-template-columns:repeat(3,1fr)}
-.hero{height:260px}
-.bottom{display:none}
-body{padding-bottom:0}
+ .cats{grid-template-columns:repeat(3,1fr)}
+ .posters{grid-template-columns:repeat(3,1fr)}
+ .hero{height:260px}
+ .bottom{display:none}
+ body{padding-bottom:0}
 }
 </style>
 </head>
@@ -78,7 +91,11 @@ body{padding-bottom:0}
 
 <header class="header" id="home">
  <div class="brand">
-  <div class="logo"></div>
+  <img
+   src="/Bharat-Swabhiman-Nyas-/app-icon-192.png"
+   class="logo"
+   alt="Bharat Swabhiman Logo"
+  >
   <div>
    <h1>Bharat Swabhiman Trust</h1>
    <p>Uttar Pradesh West</p>
@@ -489,7 +506,6 @@ $('make').onclick=async()=>{
   let c=$('canvas');
   let ctx=c.getContext('2d');
 
-  /* 1080px square poster + details panel */
   c.width=1080;
   c.height=1400;
 
@@ -634,15 +650,15 @@ load();
 <!-- REGISTER ANDROID APP SERVICE WORKER -->
 <script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register(
-      '/Bharat-Swabhiman-Nyas-/service-worker.js'
-    ).then(function () {
-      console.log('Bharat Swabhiman App Ready');
-    }).catch(function (error) {
-      console.error('App setup error:', error);
-    });
+ window.addEventListener('load',function(){
+  navigator.serviceWorker.register(
+   '/Bharat-Swabhiman-Nyas-/service-worker.js'
+  ).then(function(){
+   console.log('Bharat Swabhiman App Ready');
+  }).catch(function(error){
+   console.error('App setup error:',error);
   });
+ });
 }
 </script>
 
