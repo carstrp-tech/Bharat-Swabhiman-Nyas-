@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'bharat-swabhiman-app-v2';
+const CACHE_NAME = 'bharat-swabhiman-app-v3';
 const APP_ROOT = '/Bharat-Swabhiman-Nyas-/';
 
 const SHELL = [
