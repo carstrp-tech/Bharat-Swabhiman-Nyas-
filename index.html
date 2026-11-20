@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -16,74 +15,321 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f1f2f7;color:#292929;font-family:Hind,sans-serif;padding-bottom:70px}
-button,input,select{font:inherit}
-button{cursor:pointer}
+:root{
+ --saffron:#ff7900;
+ --saffron-2:#ffa534;
+ --navy:#172554;
+ --indigo:#4338a8;
+ --purple:#7e22ce;
+ --bg:#f6f4fb;
+ --card:#ffffff;
+ --text:#1e1b3a;
+ --muted:#6b6b85;
+ --radius:20px;
+ --shadow:0 6px 20px rgba(23,37,84,.08);
+ --shadow-lg:0 14px 34px rgba(67,56,168,.18);
+ --ease:cubic-bezier(.22,.8,.3,1);
+}
 
-.header{background:#606060;color:#fff;text-align:center;padding:20px 12px}
-.brand{display:flex;justify-content:center;align-items:center;gap:14px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ background:
+  radial-gradient(900px 400px at 100% -10%,rgba(255,121,0,.10),transparent 60%),
+  radial-gradient(800px 400px at -10% 30%,rgba(126,34,206,.08),transparent 60%),
+  var(--bg);
+ color:var(--text);
+ font-family:Hind,sans-serif;
+ padding-bottom:84px;
+}
+button,input,select{font:inherit}
+button{cursor:pointer;transition:transform .2s var(--ease),box-shadow .25s var(--ease),background .25s}
+button:active{transform:scale(.96)}
+
+/* ---------- KEYFRAMES ---------- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{from{opacity:0;transform:translateY(24px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes ringPulse{0%{box-shadow:0 0 0 0 rgba(255,121,0,.55)}70%{box-shadow:0 0 0 14px rgba(255,121,0,0)}100%{box-shadow:0 0 0 0 rgba(255,121,0,0)}}
+@keyframes shine{0%{transform:translateX(-120%) skewX(-20deg)}60%,100%{transform:translateX(220%) skewX(-20deg)}}
+@keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(-4deg)}}
+
+/* ---------- HEADER ---------- */
+.header{
+ position:relative;
+ overflow:hidden;
+ background:linear-gradient(120deg,#172554,#4338a8,#7e22ce,#4338a8,#172554);
+ background-size:300% 300%;
+ animation:gradientShift 14s ease infinite;
+ color:#fff;
+ text-align:center;
+ padding:26px 14px 34px;
+ border-radius:0 0 32px 32px;
+ box-shadow:0 12px 30px rgba(23,37,84,.28);
+}
+.header::before,.header::after{
+ content:"";position:absolute;border-radius:50%;pointer-events:none;
+ background:radial-gradient(circle,rgba(255,138,0,.35),transparent 70%);
+}
+.header::before{width:240px;height:240px;top:-90px;right:-60px;animation:floaty 7s ease-in-out infinite}
+.header::after{width:200px;height:200px;bottom:-100px;left:-60px;animation:floaty 9s ease-in-out infinite reverse}
+.brand{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;gap:14px;animation:fadeUp .8s var(--ease) both}
 .logo{
- width:58px;height:58px;border:1px solid #aaa;
+ width:62px;height:62px;border:3px solid var(--saffron);
  border-radius:50%;object-fit:cover;background:#fff;
  display:block;flex-shrink:0;
+ animation:ringPulse 2.6s infinite;
 }
-.brand h1{font:700 20px Poppins;margin:0}
-.brand p{margin:2px 0;color:#ffb16f;text-align:left;font-size:17px}
+.brand h1{font:700 20px Poppins;margin:0;letter-spacing:.2px;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.brand p{margin:3px 0 0;color:#ffc58a;text-align:left;font-size:16px;font-weight:500}
 
-.orange{background:#ff7900;color:#fff;border:0;border-radius:28px;padding:11px 22px}
-.admin-btn{margin-top:15px}
-.menu{display:flex;gap:8px;overflow:auto;padding:14px 12px;white-space:nowrap}
-.menu button{border:0;background:#fff;border-radius:22px;padding:9px 14px}
+.orange{
+ position:relative;overflow:hidden;
+ background:linear-gradient(135deg,var(--saffron),var(--saffron-2));
+ color:#fff;border:0;border-radius:28px;padding:11px 22px;
+ font-weight:600;
+ box-shadow:0 6px 16px rgba(255,121,0,.35);
+}
+.orange::after{
+ content:"";position:absolute;top:0;left:0;width:40%;height:100%;
+ background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+ transform:translateX(-120%) skewX(-20deg);
+ animation:shine 3.6s ease-in-out infinite;
+ pointer-events:none;
+}
+.orange:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(255,121,0,.45)}
+.orange:disabled{opacity:.7;cursor:wait}
+.admin-btn{position:relative;z-index:1;margin-top:16px;animation:fadeUp .9s .15s var(--ease) both}
 
-/* SWAMI JI BANNER */
+/* ---------- MENU ---------- */
+.menu{
+ position:sticky;top:0;z-index:4;
+ display:flex;gap:8px;overflow:auto;padding:12px;white-space:nowrap;
+ background:rgba(246,244,251,.78);
+ backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ scrollbar-width:none;
+}
+.menu::-webkit-scrollbar{display:none}
+.menu button{
+ border:1px solid #ece8f7;background:#fff;border-radius:22px;padding:8px 16px;
+ color:var(--navy);font-weight:500;box-shadow:0 2px 8px rgba(23,37,84,.05);
+ animation:fadeUp .5s var(--ease) both;
+}
+.menu button:nth-child(1){animation-delay:.05s}
+.menu button:nth-child(2){animation-delay:.10s}
+.menu button:nth-child(3){animation-delay:.15s}
+.menu button:nth-child(4){animation-delay:.20s}
+.menu button:nth-child(5){animation-delay:.25s}
+.menu button:nth-child(6){animation-delay:.30s}
+.menu button:nth-child(7){animation-delay:.35s}
+.menu button:nth-child(8){animation-delay:.40s}
+.menu button:nth-child(n+9){animation-delay:.45s}
+.menu button:hover{
+ background:linear-gradient(135deg,var(--saffron),var(--saffron-2));
+ color:#fff;border-color:transparent;transform:translateY(-2px);
+}
+
+/* ---------- HERO BANNER ---------- */
 .hero{
- width:100%;
+ width:calc(100% - 28px);
  max-width:1100px;
- margin:0 auto;
- background:#f1f2f7;
+ margin:18px auto 4px;
+ background:#fff;
+ border-radius:24px;
  overflow:hidden;
+ box-shadow:var(--shadow-lg);
+ animation:popIn .9s .1s var(--ease) both;
 }
 .hero img{
- width:100%;
- height:auto;
- display:block;
- object-fit:contain;
+ width:100%;height:auto;display:block;object-fit:contain;
+ transition:transform 6s ease;
+}
+.hero:hover img{transform:scale(1.04)}
+
+/* ---------- SECTIONS ---------- */
+.wrap{max-width:1000px;margin:auto;padding:18px 14px}
+.heading{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px;gap:10px}
+.heading h2{
+ font-size:22px;margin:0;color:var(--navy);position:relative;padding-left:14px;
+}
+.heading h2::before{
+ content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+ width:5px;height:24px;border-radius:4px;
+ background:linear-gradient(var(--saffron),var(--purple));
+}
+.heading span{
+ color:var(--indigo);background:#ece9fb;padding:4px 12px;border-radius:14px;
+ font-size:13px;font-weight:600;white-space:nowrap;
 }
 
-.wrap{max-width:1000px;margin:auto;padding:18px 14px}
-.heading{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px}
-.heading h2{font-size:22px;margin:0}
-.heading span{color:#888}
+/* ---------- CATEGORIES ---------- */
 .cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.cat{display:flex;align-items:center;gap:10px;text-align:left;border:1px solid #eee;border-radius:18px;background:#fff;padding:14px 10px;min-height:100px}
-.ico{background:#fff0e2;border-radius:14px;padding:10px;font-size:24px}
-.cat b{font-size:14px;line-height:1.3}
-.posters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.poster{background:#fff;border-radius:15px;overflow:hidden}
-.poster img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
-.poster div{padding:10px}
-.poster small{color:#888}
-.panel{display:none;background:#fff;border-radius:16px;padding:18px;margin-top:24px}
-.field{margin:12px 0}
-.field label{display:block;font-weight:600;margin-bottom:5px}
-.field input,.field select{width:100%;padding:11px;border:1px solid #ddd;border-radius:9px;background:#fff}
-.muted{color:#777;font-size:13px}
-.footer{background:#111;color:#bbb;text-align:center;padding:28px 10px;margin-top:28px}
-.footer h3{font:700 20px Poppins;color:#ff7900;margin:0}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:10px;z-index:5}
-.bottom a{text-decoration:none;color:#888;text-align:center;font-size:12px}
-.bottom span{display:block;font-size:21px}
-.bottom a:first-child{color:#ff7900}
-.overlay{display:none;position:fixed;inset:0;background:#0009;z-index:10;align-items:center;justify-content:center;padding:15px}
-.modal{background:white;border-radius:16px;padding:20px;width:100%;max-width:480px;max-height:90vh;overflow:auto}
-.actions{display:flex;gap:10px;margin-top:15px}
+.cat{
+ display:flex;align-items:center;gap:10px;text-align:left;
+ border:1px solid #efeaf9;border-radius:var(--radius);
+ background:linear-gradient(145deg,#fff,#faf8ff);
+ padding:14px 10px;min-height:100px;color:var(--text);
+ box-shadow:var(--shadow);
+ animation:fadeUp .6s var(--ease) both;
+ position:relative;overflow:hidden;
+}
+.cat::before{
+ content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+ background:linear-gradient(var(--saffron),var(--purple));
+ transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease);
+}
+.cat:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:#ddd5f5}
+.cat:hover::before{transform:scaleY(1)}
+.cat:nth-child(1){animation-delay:.04s}
+.cat:nth-child(2){animation-delay:.08s}
+.cat:nth-child(3){animation-delay:.12s}
+.cat:nth-child(4){animation-delay:.16s}
+.cat:nth-child(5){animation-delay:.20s}
+.cat:nth-child(6){animation-delay:.24s}
+.cat:nth-child(7){animation-delay:.28s}
+.cat:nth-child(8){animation-delay:.32s}
+.cat:nth-child(9){animation-delay:.36s}
+.cat:nth-child(10){animation-delay:.40s}
+.cat:nth-child(11){animation-delay:.44s}
+.cat:nth-child(12){animation-delay:.48s}
+.ico{
+ background:linear-gradient(135deg,#fff0e2,#ffe0c4);
+ border-radius:16px;padding:11px;font-size:26px;
+ box-shadow:inset 0 0 0 1px rgba(255,121,0,.15);
+ transition:transform .3s var(--ease);
+}
+.cat:hover .ico{animation:bob .8s ease-in-out infinite}
+.cat b{font-size:14px;line-height:1.35;color:var(--navy)}
+
+/* ---------- POSTERS ---------- */
+.posters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.poster{
+ background:var(--card);border-radius:var(--radius);overflow:hidden;
+ box-shadow:var(--shadow);
+ animation:fadeUp .6s var(--ease) both;
+ transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+}
+.poster:nth-child(2){animation-delay:.06s}
+.poster:nth-child(3){animation-delay:.12s}
+.poster:nth-child(4){animation-delay:.18s}
+.poster:nth-child(5){animation-delay:.24s}
+.poster:nth-child(6){animation-delay:.30s}
+.poster:nth-child(n+7){animation-delay:.36s}
+.poster:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.poster img{
+ width:100%;aspect-ratio:1;object-fit:cover;display:block;
+ background:linear-gradient(90deg,#eee 25%,#f7f7fb 50%,#eee 75%);
+ background-size:800px 100%;animation:shimmer 1.4s infinite linear;
+ transition:transform .6s var(--ease);
+}
+.poster:hover img{transform:scale(1.06)}
+.poster{position:relative}
+.poster img{position:relative;z-index:0}
+.poster div{padding:12px;position:relative;z-index:1;background:#fff}
+.poster b{color:var(--navy);font-size:15px;line-height:1.3}
+.poster small{color:var(--muted)}
+.poster .orange{width:100%;margin-top:10px;padding:10px 12px;font-size:14px}
+.poster>div{overflow:hidden}
+
+/* ---------- ADMIN PANEL ---------- */
+.panel{
+ display:none;background:#fff;border-radius:24px;padding:22px;margin-top:24px;
+ box-shadow:var(--shadow-lg);border-top:5px solid var(--saffron);
+ animation:popIn .5s var(--ease) both;
+}
+.panel h2{color:var(--navy);margin-top:0}
+.panel hr{border:0;height:1px;background:linear-gradient(90deg,transparent,#ddd,transparent);margin:22px 0}
+.field{margin:14px 0}
+.field label{display:block;font-weight:600;margin-bottom:6px;color:var(--navy)}
+.field input,.field select{
+ width:100%;padding:12px 14px;border:1.5px solid #e4e1f0;border-radius:12px;background:#fbfaff;
+ transition:border-color .25s,box-shadow .25s,background .25s;outline:none;
+}
+.field input:focus,.field select:focus{
+ border-color:var(--saffron);background:#fff;box-shadow:0 0 0 4px rgba(255,121,0,.15);
+}
+.field input[type=file]{padding:9px;background:#fff;border-style:dashed}
+.muted{color:var(--muted);font-size:13px}
+
+/* ---------- FOOTER ---------- */
+.footer{
+ background:linear-gradient(160deg,#0f172a,#1e1b4b);
+ color:#c4c4d8;text-align:center;padding:34px 10px;margin-top:34px;
+ border-radius:32px 32px 0 0;
+ position:relative;overflow:hidden;
+}
+.footer::before{
+ content:"";position:absolute;top:0;left:0;right:0;height:4px;
+ background:linear-gradient(90deg,var(--saffron),#fff,#138808);
+}
+.footer h3{font:700 20px Poppins;color:var(--saffron-2);margin:0}
+.footer p{margin:6px 0}
+
+/* ---------- BOTTOM NAV ---------- */
+.bottom{
+ position:fixed;bottom:10px;left:12px;right:12px;
+ background:rgba(255,255,255,.88);
+ backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ display:flex;justify-content:space-around;padding:8px 6px;z-index:5;
+ border-radius:24px;box-shadow:0 10px 30px rgba(23,37,84,.22);
+ border:1px solid rgba(255,255,255,.8);
+ animation:fadeUp .8s .3s var(--ease) both;
+}
+.bottom a{
+ text-decoration:none;color:#8a8aa3;text-align:center;font-size:12px;font-weight:500;
+ padding:6px 14px;border-radius:16px;transition:all .25s var(--ease);
+}
+.bottom a:active{transform:scale(.9)}
+.bottom span{display:block;font-size:21px;transition:transform .3s var(--ease)}
+.bottom a:hover span{transform:translateY(-3px)}
+.bottom a:first-child{color:var(--saffron);background:rgba(255,121,0,.1)}
+
+/* ---------- MODALS ---------- */
+.overlay{
+ display:none;position:fixed;inset:0;
+ background:rgba(15,23,42,.62);
+ backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+ z-index:10;align-items:center;justify-content:center;padding:15px;
+ animation:fadeIn .25s ease both;
+}
+.modal{
+ background:#fff;border-radius:26px;padding:24px;width:100%;max-width:480px;max-height:90vh;overflow:auto;
+ box-shadow:0 30px 70px rgba(0,0,0,.35);
+ border-top:5px solid var(--saffron);
+ animation:popIn .4s var(--ease) both;
+}
+.modal h2{margin-top:0;color:var(--navy)}
+.actions{display:flex;gap:10px;margin-top:18px}
 .actions button{flex:1}
-.grey{border:0;background:#eee;border-radius:25px;padding:10px}
-.preview{width:100%;display:block;border:1px solid #ddd}
-.adminlist{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.adminlist img{width:100%;aspect-ratio:1;object-fit:cover}
-.empty{padding:30px;text-align:center;color:#888;background:#fff;border:1px dashed #ccc;border-radius:16px}
+.grey{
+ border:0;background:#eeeef6;color:var(--navy);border-radius:25px;padding:10px 18px;font-weight:600;
+}
+.grey:hover{background:#e0e0ee;transform:translateY(-1px)}
+.preview{
+ width:100%;display:block;border:0;border-radius:16px;
+ box-shadow:0 10px 28px rgba(0,0,0,.2);
+ animation:popIn .6s .1s var(--ease) both;
+}
+
+/* ---------- ADMIN LIST ---------- */
+.adminlist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.adminlist>div{
+ background:#faf9ff;border-radius:16px;padding:8px;border:1px solid #eee9fa;
+ animation:fadeUp .5s var(--ease) both;
+}
+.adminlist img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px}
+.adminlist p{margin:8px 0;font-weight:600;color:var(--navy);font-size:14px}
+.adminlist .grey{width:100%}
+
+.empty{
+ padding:34px;text-align:center;color:var(--muted);background:#fff;
+ border:2px dashed #d8d2ee;border-radius:var(--radius);
+ animation:fadeUp .5s var(--ease) both;
+}
 .hidden{display:none!important}
 
 @media(min-width:700px){
@@ -91,6 +337,12 @@ button{cursor:pointer}
  .posters{grid-template-columns:repeat(3,1fr)}
  .bottom{display:none}
  body{padding-bottom:0}
+ .brand h1{font-size:26px}
+ .logo{width:72px;height:72px}
+}
+
+@media (prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
@@ -330,341 +582,4 @@ function filter(n){
 function render(items){
  $('posterGrid').innerHTML='';
  $('postCount').textContent=items.length+' पोस्टर';
- $('empty').classList.toggle('hidden',items.length>0);
-
- items.forEach(p=>{
-  let c=document.createElement('article');
-  c.className='poster';
-
-  let im=document.createElement('img');
-  im.src=p.imageUrl;
-  im.alt=p.title;
-
-  let d=document.createElement('div');
-  let b=document.createElement('b');
-  let s=document.createElement('small');
-  let btn=document.createElement('button');
-
-  b.textContent=p.title;
-  s.textContent=p.category;
-  btn.textContent='अपना पोस्टर बनाएँ';
-  btn.className='orange';
-
-  btn.onclick=()=>{
-   chosen=p;
-   modal('detailsBox',true);
-  };
-
-  d.append(b,document.createElement('br'),s,document.createElement('br'),btn);
-  c.append(im,d);
-  $('posterGrid').append(c);
- });
-}
-
-async function load(){
- try{
-  let snap=await getDocs(collection(db,'posters'));
-  posters=snap.docs.map(x=>({id:x.id,...x.data()}))
-   .filter(x=>x.imageUrl&&x.category);
-  render(posters);
-  adminList();
- }catch(e){
-  $('postCount').textContent='डेटा लोड नहीं हुआ';
-  console.error(e);
- }
-}
-
-function adminList(){
- $('adminList').innerHTML='';
- if(!user)return;
-
- posters.forEach(p=>{
-  let d=document.createElement('div');
-  let im=document.createElement('img');
-  let t=document.createElement('p');
-  let b=document.createElement('button');
-
-  im.src=p.imageUrl;
-  t.textContent=p.title;
-  b.textContent='हटाएँ';
-  b.className='grey';
-
-  b.onclick=async()=>{
-   if(confirm('इस पोस्टर को हटाएँ?')){
-    await deleteDoc(doc(db,'posters',p.id));
-    await load();
-   }
-  };
-
-  d.append(im,t,b);
-  $('adminList').append(d);
- });
-}
-
-/* ADMIN LOGIN */
-$('adminBtn').onclick=()=>modal('loginBox',true);
-
-$('profile').onclick=e=>{
- e.preventDefault();
- modal('loginBox',true);
-};
-
-$('cancelLogin').onclick=()=>modal('loginBox',false);
-
-$('login').onclick=async()=>{
- try{
-  let r=await signInWithEmailAndPassword(
-   auth,$('email').value.trim(),$('password').value
-  );
-
-  if(r.user.uid!==ADMIN_UID){
-   await signOut(auth);
-   throw Error('यह अकाउंट एडमिन के लिए अधिकृत नहीं है।');
-  }
-  modal('loginBox',false);
- }catch(e){
-  $('loginError').textContent=e.message;
- }
-};
-
-onAuthStateChanged(auth,u=>{
- user=u&&u.uid===ADMIN_UID?u:null;
- $('dashboard').style.display=user?'block':'none';
- $('adminBtn').textContent=user?'Admin Dashboard':'♟ Admin Login';
- adminList();
-});
-
-$('logout').onclick=()=>signOut(auth);
-
-/* CLOUDINARY POSTER UPLOAD */
-$('upload').onclick=async()=>{
- let file=$('posterFile').files[0];
- let title=$('title').value.trim();
- let category=$('category').value;
-
- if(!user)return alert('पहले एडमिन लॉगिन करें');
- if(!file||!title||!category)return alert('नाम, कैटेगरी और फोटो चुनें');
- if(file.size>10*1024*1024)return alert('फोटो 10 MB से छोटी रखें');
-
- $('upload').disabled=true;
- $('status').textContent='अपलोड हो रहा है...';
-
- try{
-  let fd=new FormData();
-  fd.append('file',file);
-  fd.append('upload_preset',PRESET);
-
-  let res=await fetch(
-   'https://api.cloudinary.com/v1_1/'+CLOUD+'/image/upload',
-   {method:'POST',body:fd}
-  );
-
-  let data=await res.json();
-  if(!res.ok)throw Error(data.error?.message||'Upload error');
-
-  await addDoc(collection(db,'posters'),{
-   title,category,imageUrl:data.secure_url,createdAt:serverTimestamp()
-  });
-
-  $('status').textContent='पोस्टर अपलोड हो गया';
-  $('title').value='';
-  $('posterFile').value='';
-  await load();
-
- }catch(e){
-  $('status').textContent='त्रुटि: '+e.message;
- }finally{
-  $('upload').disabled=false;
- }
-};
-
-/* IMAGE LOADER */
-function imgLoad(src,useCors=false){
- return new Promise((ok,no)=>{
-  let i=new Image();
-  if(useCors)i.crossOrigin='anonymous';
-  i.onload=()=>ok(i);
-  i.onerror=()=>no(new Error('Image load failed'));
-  i.src=src;
- });
-}
-
-/* PERSONAL POSTER GENERATOR */
-$('cancelDetails').onclick=()=>modal('detailsBox',false);
-
-$('make').onclick=async()=>{
- let name=$('personName').value.trim();
- let role=$('personRole').value.trim();
- let district=$('personDistrict').value.trim();
- let state=$('personState').value.trim();
- let mobile=$('personMobile').value.trim();
- let pf=$('personPhoto').files[0];
-
- if(!chosen)return alert('पहले पोस्टर चुनें');
- if(!name||!role||!district||!state||!pf)
-  return alert('फोटो, नाम, पद, जिला और राज्य भरें');
-
- if(mobile&&!/^\d{10}$/.test(mobile))
-  return alert('मोबाइल नंबर 10 अंकों का होना चाहिए');
-
- $('make').disabled=true;
- $('make').textContent='पोस्टर तैयार हो रहा है...';
-
- let photoUrl=URL.createObjectURL(pf);
-
- try{
-  let [poster,photo]=await Promise.all([
-   imgLoad(chosen.imageUrl,true),
-   imgLoad(photoUrl,false)
-  ]);
-
-  let c=$('canvas');
-  let ctx=c.getContext('2d');
-
-  c.width=1080;
-  c.height=1400;
-
-  ctx.drawImage(poster,0,0,1080,1080);
-
-  let bg=ctx.createLinearGradient(0,1080,1080,1400);
-  bg.addColorStop(0,'#172554');
-  bg.addColorStop(0.55,'#4338a8');
-  bg.addColorStop(1,'#7e22ce');
-  ctx.fillStyle=bg;
-  ctx.fillRect(0,1080,1080,320);
-
-  ctx.fillStyle='#ff8a00';
-  ctx.fillRect(0,1080,1080,10);
-
-  ctx.fillStyle='#ffffff';
-  ctx.beginPath();
-  ctx.roundRect(28,1110,1024,265,28);
-  ctx.fill();
-
-  ctx.beginPath();
-  ctx.arc(155,1240,100,0,Math.PI*2);
-  ctx.fillStyle='#ff8a00';
-  ctx.fill();
-
-  ctx.beginPath();
-  ctx.arc(155,1240,91,0,Math.PI*2);
-  ctx.fillStyle='#ffffff';
-  ctx.fill();
-
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(155,1240,84,0,Math.PI*2);
-  ctx.clip();
-  ctx.drawImage(photo,71,1156,168,168);
-  ctx.restore();
-
-  ctx.fillStyle='#172554';
-  ctx.font='bold 48px Hind, sans-serif';
-  ctx.fillText(name,285,1185,720);
-
-  ctx.fillStyle='#ea580c';
-  ctx.font='bold 32px Hind, sans-serif';
-  ctx.fillText(role,285,1230,720);
-
-  ctx.fillStyle='#e0e7ff';
-  ctx.beginPath();
-  ctx.roundRect(280,1250,350,52,14);
-  ctx.fill();
-
-  ctx.fillStyle='#1e3a8a';
-  ctx.font='bold 25px Hind, sans-serif';
-  ctx.fillText('जिला: '+district,298,1285,315);
-
-  ctx.fillStyle='#ffedd5';
-  ctx.beginPath();
-  ctx.roundRect(645,1250,375,52,14);
-  ctx.fill();
-
-  ctx.fillStyle='#9a3412';
-  ctx.font='bold 25px Hind, sans-serif';
-  ctx.fillText('राज्य: '+state,663,1285,340);
-
-  if(mobile){
-   ctx.fillStyle='#15803d';
-   ctx.font='bold 25px Hind, sans-serif';
-   ctx.fillText('☎  '+mobile,285,1345,700);
-  }
-
-  blob=await new Promise((ok,no)=>{
-   c.toBlob(result=>{
-    if(result)ok(result);
-    else no(new Error('Image export failed'));
-   },'image/jpeg',0.94);
-  });
-
-  if(!blob)throw new Error('पोस्टर फाइल नहीं बन पाई');
-
-  modal('detailsBox',false);
-  modal('resultBox',true);
-
- }catch(e){
-  console.error(e);
-  alert('ERROR: '+(e.message||e));
- }finally{
-  URL.revokeObjectURL(photoUrl);
-  $('make').disabled=false;
-  $('make').textContent='पोस्टर तैयार करें';
- }
-};
-
-/* DOWNLOAD */
-$('download').onclick=()=>{
- if(!blob)return;
- let u=URL.createObjectURL(blob);
- let a=document.createElement('a');
- a.href=u;
- a.download='Bharat-Swabhiman-Poster.jpg';
- a.click();
- setTimeout(()=>URL.revokeObjectURL(u),2000);
-};
-
-/* SHARE */
-$('share').onclick=async()=>{
- if(!blob)return;
-
- let f=new File(
-  [blob],
-  'Bharat-Swabhiman-Poster.jpg',
-  {type:'image/jpeg'}
- );
-
- try{
-  if(navigator.canShare&&navigator.canShare({files:[f]})){
-   await navigator.share({files:[f],title:'मेरा पोस्टर'});
-  }else{
-   $('download').click();
-   alert('पोस्टर डाउनलोड हो गया है। अब इसे WhatsApp या Facebook पर शेयर करें।');
-  }
- }catch(e){
-  console.log(e);
- }
-};
-
-$('closeResult').onclick=()=>modal('resultBox',false);
-
-/* START */
-load();
-</script>
-
-<!-- REGISTER ANDROID APP SERVICE WORKER -->
-<script>
-if ('serviceWorker' in navigator) {
- window.addEventListener('load',function(){
-  navigator.serviceWorker.register(
-   '/Bharat-Swabhiman-Nyas-/service-worker.js'
-  ).then(function(){
-   console.log('Bharat Swabhiman App Ready');
-  }).catch(function(error){
-   console.error('App setup error:',error);
-  });
- });
-}
-</script>
-
-</body>
-</html>
+ $('empty').classList.toggle('hidden
